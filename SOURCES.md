@@ -41,4 +41,3 @@ The four teaching books are original simplified educational prose prepared for t
 
 ## Third Hos scans
 The six supplied original scans are displayed in printed page order 244, 245, 246, 247, 248, 249, retaining the Arabic, Coptic and pronunciation columns.
-

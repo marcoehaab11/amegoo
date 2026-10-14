@@ -30,4 +30,3 @@ Verified all four books (26 chapters), chapter contents navigation, return to co
 
 ## Third Hos reader
 Verified printed page ordering 244–249, six offline images, previous/next boundaries, zoom and mobile layout.
-
