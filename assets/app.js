@@ -713,8 +713,8 @@
                 if(sectionIndex!==null)requestAnimationFrame(()=>{const t=document.getElementById('ag-full-'+sectionIndex);if(t)agReaderContent.scrollTop=t.offsetTop-agReaderContent.offsetTop;});
             }
 
-            let agFont = 1.15;
-            try { agFont = parseFloat(localStorage.getItem('ag:font')) || 1.15; } catch (e) {}
+            let agFont = 1.4;
+            try { agFont = parseFloat(localStorage.getItem('ag:font')) || 1.4; } catch (e) {}
             const applyAgFont = () => { agReaderContent.style.setProperty('--ag-fs', agFont + 'rem'); try { localStorage.setItem('ag:font', agFont); } catch (e) {} };
             applyAgFont();
             document.getElementById('agFontUp').addEventListener('click', () => { agFont = Math.min(1.8, +(agFont + 0.1).toFixed(2)); applyAgFont(); });
@@ -1401,7 +1401,7 @@ const EXTRA_HYMNS = [{"id":"mary2","title":"مديح العذراء الثاني
                 });infoCardContent.append(container);
                 const normalize=text=>text.normalize('NFD').replace(/[\u064B-\u065F\u0670\u0640]/g,'').replace(/[أإآ]/g,'ا').replace(/ى/g,'ي');
                 search.oninput=()=>{const q=normalize(search.value.trim());let count=0;entries.forEach(({details,section})=>{const visible=normalize(section.title+' '+section.paragraphs.join(' ')).includes(q);details.hidden=!visible;if(visible)count++;});groupHeaders.forEach(h=>h.hidden=Boolean(q));result.textContent=q?(count?'عدد الأقسام المطابقة: '+count:'لا توجد نتائج'):'عدد الصلوات والأقسام: '+entries.length;};
-                select.onchange=()=>{if(!select.value)return;search.value='';search.oninput();const target=document.getElementById(select.value);target.open=true;container.scrollTop=target.offsetTop-container.offsetTop;rememberReading({type:'khoolagy',bookIndex:khoolagyActive,section:book.sections.findIndex((_,i)=>'kh-'+book.id+'-'+i===select.value)});};
+                select.onchange=()=>{if(!select.value)return;search.value='';search.oninput();const target=document.getElementById(select.value);target.open=true;target.scrollIntoView({block:'start'});rememberReading({type:'khoolagy',bookIndex:khoolagyActive,section:book.sections.findIndex((_,i)=>'kh-'+book.id+'-'+i===select.value)});};
                 search.oninput();
                 const attribution=document.createElement('p');attribution.className='kh-note';attribution.textContent='النصوص الطقسية العربية التقليدية، بحسب فهارس الخولاجي بمكتبة الأنبا تكلا. القراءات اليومية والألحان المتغيرة بحسب المناسبة تُراجع في القطمارس. قراءة هذه النصوص لا تحتاج اتصالًا بمصدر خارجي.';infoCardContent.append(attribution);
                 infoCard.classList.remove('hidden');rememberReading({type:'khoolagy',bookIndex:khoolagyActive,section:0});
@@ -1478,7 +1478,7 @@ const EXTRA_HYMNS = [{"id":"mary2","title":"مديح العذراء الثاني
             function showFavorites(){hideAllMainViews();const container=document.getElementById('favoritesContent');container.replaceChildren();if(!favorites.length){const empty=document.createElement('p');empty.className='kh-note';empty.textContent='افتح صلاة أو أصحاحاً واضغط «أضف للمفضلة» لتجده هنا.';container.append(empty);}favorites.forEach(result=>{const row=document.createElement('div');row.className='favorite-row';const open=document.createElement('button');open.className='search-result';open.textContent=result.title;open.onclick=()=>openSearchResult(result);const remove=document.createElement('button');remove.className='kh-button';remove.textContent='إزالة';remove.onclick=()=>{favorites=favorites.filter(x=>resultKey(x)!==resultKey(result));try{localStorage.setItem('coptic:favorites',JSON.stringify(favorites));}catch(e){}showFavorites();};row.append(open,remove);container.append(row);});document.getElementById('favoritesCard').classList.remove('hidden');}
             document.getElementById('favoritesBtn').onclick=showFavorites;document.getElementById('backFromFavoritesBtn').onclick=showMainApp;
             document.getElementById('continueReadingBtn').onclick=()=>{try{const value=JSON.parse(localStorage.getItem('coptic:lastReading'));const result=readingResult(value);if(result)openSearchResult(result);}catch(e){}};
-            let readerFont=1.35;try{readerFont=Math.max(.95,Math.min(2.2,Number(localStorage.getItem('coptic:readerFont'))||1.35));}catch(e){}
+            let readerFont=1.45;try{readerFont=Math.max(.95,Math.min(2.2,Number(localStorage.getItem('coptic:readerFont'))||1.45));}catch(e){}
             function applyReaderFont(){document.documentElement.style.setProperty('--reader-font',readerFont+'rem');try{localStorage.setItem('coptic:readerFont',readerFont);}catch(e){}}
             document.getElementById('readerFontUp').onclick=()=>{readerFont=Math.min(2.2,+(readerFont+.1).toFixed(2));applyReaderFont();};document.getElementById('readerFontDown').onclick=()=>{readerFont=Math.max(.95,+(readerFont-.1).toFixed(2));applyReaderFont();};applyReaderFont();refreshContinueButton();
 

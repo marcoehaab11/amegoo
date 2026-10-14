@@ -1,0 +1,70 @@
+/* Spacious readers: one main scrolling surface, without nested card gutters. */
+:root{--reading-footer:132px;--reading-page-width:1040px}
+body{align-items:flex-start;padding:12px 12px 150px}
+.selection-card{width:100%;max-width:1440px;padding:24px 20px}
+.selection-card .header h2{line-height:1.5}
+.btn-back,.kh-button,.chapter-toolbar button,.ag-font-btn,.christos-toolbar button{min-height:44px}
+body:has(:is(#chapterReaderCard,#deepTopicReaderCard,#agpeyaReaderCard,#infoCard,#katamerosCard):not(.hidden)){padding:0 0 var(--reading-footer);background:#111b2b}
+:is(#chapterReaderCard,#deepTopicReaderCard,#agpeyaReaderCard,#infoCard,#katamerosCard){width:100%;max-width:none;height:calc(100dvh - var(--reading-footer));min-height:240px;border:0;border-radius:0;padding:12px 16px;display:flex;flex-direction:column;gap:8px;background:#111b2b;box-shadow:none;backdrop-filter:none;animation:none}
+:is(#chapterReaderCard,#deepTopicReaderCard,#agpeyaReaderCard,#infoCard,#katamerosCard)>.btn-back{align-self:flex-start;margin:0;padding:6px 10px;font-size:.85rem}
+:is(#chapterReaderCard,#deepTopicReaderCard,#agpeyaReaderCard,#infoCard,#katamerosCard)>.header{margin:0}
+:is(#chapterReaderCard,#deepTopicReaderCard,#agpeyaReaderCard,#infoCard,#katamerosCard)>.header h2{font-size:clamp(1.2rem,2vw,1.7rem);margin:0;color:#f1f5f9;background:none;-webkit-text-fill-color:currentColor}
+:is(#chapterReaderCard,#deepTopicReaderCard,#agpeyaReaderCard,#infoCard,#katamerosCard)>.header p{font-size:.85rem;line-height:1.6;margin:2px 0;color:#b8c6d8}
+#readerBookSubtitle,#deepTopicReaderCard>.header p{display:none}
+.chapter-toolbar{padding:6px 10px;margin:0;gap:8px;flex-wrap:wrap;background:#1b293d;border:1px solid #334155}
+.ag-tools,.kat-toolbar{margin:0;flex-shrink:0}
+#chapterContent,#deepReaderContent,#agReaderContent,#infoCardContent,#katContent,#infoCardContent:has(.kh-search),#katContent.kat-embed{flex:1;min-height:0;max-height:none;height:auto;overflow:auto;border:0;border-radius:8px;background:#152135;padding:16px clamp(12px,3vw,32px);color:#edf1f7;scroll-padding-top:16px;overscroll-behavior:contain}
+#chapterContent{padding-inline:max(16px,calc((100% - var(--reading-page-width))/2));font-family:Amiri,serif;font-size:var(--reader-font,1.45rem);line-height:2.05}
+#chapterContent span:not(.verse-num){font-family:Amiri,serif;user-select:text}
+.verse-num{font-size:.8rem;margin-left:8px}
+#agReaderContent{font-family:Amiri,serif;font-size:var(--ag-fs,1.45rem);line-height:2.05}
+.ag-text p,.ag-text div{font-family:Amiri,serif;user-select:text}
+#agReaderContent>.ag-section,#agReaderContent>.kh-group,#agReaderContent>.kh-text{max-width:var(--reading-page-width);margin-inline:auto}
+.kh-text,.teaching-book section p{font-family:Amiri,serif;font-size:var(--reader-font,1.45rem);line-height:2.05;user-select:text}
+.kh-note{color:#b8c6d8}
+.teaching-book{max-width:var(--reading-page-width);padding:0 8px;border:0;border-radius:0;background:none}
+.teaching-book section{padding:18px 0}
+.teaching-book section h3,.kh-group{font-size:1.05rem;line-height:1.8}
+.book-contents{padding:12px;margin:12px 0}
+.book-chapter-link{min-height:44px;font-size:.95rem}
+.kh-sections{max-height:none;overflow:visible;padding:0 0 20px;max-width:var(--reading-page-width);margin-inline:auto}
+.kh-toolbar{margin:10px 0}
+.kh-section{padding:14px;margin:12px 0}
+.christos-reader{max-width:1120px;margin-inline:auto}
+.christos-toolbar{flex-wrap:wrap;gap:8px}
+.christos-toolbar>div{flex-wrap:wrap}
+.christos-counter{white-space:normal}
+.christos-page,.mary-svg-reader .christos-page{max-height:none;overflow:visible;touch-action:pan-x pan-y}
+.christos-page img{max-height:none;max-width:100%;height:auto}
+.mary-page-enlarged .christos-page{overflow:auto;max-height:65dvh}
+.mary-page-tools{margin:0}
+.reading-tools{width:calc(100% - 24px);max-width:1040px;bottom:70px;padding:6px;background:#152135;border-color:#475569}
+.reading-tools .kh-button{min-height:40px;font-size:.85rem}
+.bottom-nav{width:calc(100% - 24px);max-width:1040px}
+.faith-chat-card{max-width:1100px;padding:20px}
+.faith-messages{max-height:none;min-height:160px}
+.faith-message p{font-family:Amiri,serif;font-size:1.3rem;line-height:2}
+.notes-card{max-width:1440px}
+.notes-shell{min-height:70vh}
+@media(max-width:600px){
+ body{padding:8px 8px 150px}
+ .selection-card{padding:20px 14px;border-radius:16px}
+ :is(#chapterReaderCard,#deepTopicReaderCard,#agpeyaReaderCard,#infoCard,#katamerosCard){padding:8px;gap:6px}
+ #chapterContent,#deepReaderContent,#agReaderContent,#infoCardContent,#katContent,#infoCardContent:has(.kh-search){padding:14px 10px;border-radius:6px}
+ #chapterContent{padding-inline:12px}
+ .chapter-toolbar{font-size:.85rem;padding:4px 6px}
+ .chapter-toolbar button{padding:6px 10px;font-size:.85rem}
+ .teaching-book{padding:0}
+ .kh-section{padding:12px}
+ .christos-toolbar{padding:6px}
+ .christos-toolbar button{font-size:.82rem;padding:6px 10px}
+ .faith-chat-card{padding:18px 12px}
+ .header h2{font-size:1.5rem}
+}
+@media(max-height:600px){
+ :root{--reading-footer:118px}
+ :is(#chapterReaderCard,#deepTopicReaderCard,#agpeyaReaderCard,#infoCard,#katamerosCard){min-height:0;padding-block:4px}
+ :is(#chapterReaderCard,#deepTopicReaderCard,#agpeyaReaderCard,#infoCard,#katamerosCard)>.header{display:none}
+ .reading-tools{bottom:62px;padding:4px}
+}
+@media(prefers-reduced-motion:reduce){.selection-card{animation:none}.kh-sections{scroll-behavior:auto}}

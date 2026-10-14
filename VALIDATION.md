@@ -36,3 +36,6 @@ Verified printed page ordering 244–249, six offline images, previous/next boun
 - API tests covered explicit verse context, teaching retrieval, input and origin validation, filtered history, no-store responses, provider errors/timeouts and per-instance rate limits.
 - Edge mobile checks covered chat/source display, HTML injection as harmless text, navigation, new conversations, page-memory history, provider error messages, mobile width and offline status.
 - Vercel deployment configuration includes the local corpus. The deployed website itself has not been tested because its URL is not available in this chat.
+
+## Spacious reading layout
+Verified near-full viewport width and expanded vertical reading area for Bible, teachings, Agpeya, liturgies and hymns in Edge at 390x844 and 1280x900. Checked font controls, next chapter, book contents, liturgy section navigation and hymn pagination, with no horizontal page overflow. Images keep their natural proportions and can be zoomed; long texts use one main scrolling surface.
