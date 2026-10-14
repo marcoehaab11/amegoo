@@ -272,6 +272,7 @@
             let currentChapter = 1;
 
             function hideAllMainViews() {
+                window.stopHymnAudio?.();
                 document.querySelectorAll('#copticCard,#favoritesCard,#faithChatCard').forEach(card=>card.classList.add('hidden'));
                 readingTools?.classList.add('hidden');
                 flushNoteSave();
@@ -1472,7 +1473,7 @@ const EXTRA_HYMNS = [{"id":"mary2","title":"مديح العذراء الثاني
                 if(value.type==='lesson'){const lesson=window.APP_LEARNING.lessons.find(l=>l.id===value.id);return lesson?{type:'lesson',title:lesson.title,target:{id:value.id}}:null;}return null;
             }
             function refreshContinueButton(){const button=document.getElementById('continueReadingBtn');try{const saved=JSON.parse(localStorage.getItem('coptic:lastReading')||'null');const result=saved?readingResult(saved):null;button.hidden=!result;if(result)button.textContent='تابع: '+result.title;}catch(e){button.hidden=true;}}
-            function rememberReading(value){try{localStorage.setItem('coptic:lastReading',JSON.stringify(value));}catch(e){}const result=readingResult(value);if(result)updateFavoriteControl(result);refreshContinueButton();}
+            function rememberReading(value){if(value.type==='hymn')window.attachHymnAudio?.(value.index);try{localStorage.setItem('coptic:lastReading',JSON.stringify(value));}catch(e){}const result=readingResult(value);if(result)updateFavoriteControl(result);refreshContinueButton();}
             function updateFavoriteControl(result){currentReadingResult={type:result.type,title:result.title,target:result.target};favoriteButton.textContent=favorites.some(x=>resultKey(x)===resultKey(result))?'إزالة من المفضلة ★':'أضف للمفضلة ☆';readingTools.classList.remove('hidden');}
             favoriteButton.onclick=()=>{if(!currentReadingResult)return;const key=resultKey(currentReadingResult);if(favorites.some(x=>resultKey(x)===key))favorites=favorites.filter(x=>resultKey(x)!==key);else favorites.push(currentReadingResult);try{localStorage.setItem('coptic:favorites',JSON.stringify(favorites));}catch(e){}updateFavoriteControl(currentReadingResult);};
             function showFavorites(){hideAllMainViews();const container=document.getElementById('favoritesContent');container.replaceChildren();if(!favorites.length){const empty=document.createElement('p');empty.className='kh-note';empty.textContent='افتح صلاة أو أصحاحاً واضغط «أضف للمفضلة» لتجده هنا.';container.append(empty);}favorites.forEach(result=>{const row=document.createElement('div');row.className='favorite-row';const open=document.createElement('button');open.className='search-result';open.textContent=result.title;open.onclick=()=>openSearchResult(result);const remove=document.createElement('button');remove.className='kh-button';remove.textContent='إزالة';remove.onclick=()=>{favorites=favorites.filter(x=>resultKey(x)!==resultKey(result));try{localStorage.setItem('coptic:favorites',JSON.stringify(favorites));}catch(e){}showFavorites();};row.append(open,remove);container.append(row);});document.getElementById('favoritesCard').classList.remove('hidden');}
@@ -1490,7 +1491,7 @@ const EXTRA_HYMNS = [{"id":"mary2","title":"مديح العذراء الثاني
             window.addEventListener('appinstalled',()=>{installButton.hidden=true;});
             if('serviceWorker' in navigator&&location.protocol!=='file:'){
                 navigator.serviceWorker.register('sw.js').then(registration=>{
-                    const status=document.getElementById('offlineStatus');const ready=()=>status.textContent='محتوى القراءة جاهز للعمل بدون إنترنت. الصور والصوت تُحفظ بعد فتحها؛ القطمارس يحتاج اتصالاً.';
+                    const status=document.getElementById('offlineStatus');const ready=()=>status.textContent='القراءة جاهزة بدون إنترنت. تسجيلات الألحان الجديدة والقطمارس تحتاج اتصالًا.';
                     if(registration.active)ready();const worker=registration.installing||registration.waiting;if(worker)worker.addEventListener('statechange',()=>{if(worker.state==='activated')ready();});
                     navigator.serviceWorker.ready.then(ready);
                 }).catch(()=>{document.getElementById('offlineStatus').textContent='تعذر تجهيز القراءة بدون إنترنت. أعد فتح الموقع عند الاتصال؛ يمكنك استخدام النصوص أثناء التصفح.';});

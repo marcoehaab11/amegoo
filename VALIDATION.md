@@ -39,3 +39,10 @@ Verified printed page ordering 244–249, six offline images, previous/next boun
 
 ## Spacious reading layout
 Verified near-full viewport width and expanded vertical reading area for Bible, teachings, Agpeya, liturgies and hymns in Edge at 390x844 and 1280x900. Checked font controls, next chapter, book contents, liturgy section navigation and hymn pagination, with no horizontal page overflow. Images keep their natural proportions and can be zoomed; long texts use one main scrolling surface.
+
+## Hymn audio and bottom search
+
+- All 16 direct recording URLs responded with HTTP 200 and audio/mpeg; both official SoundCloud oEmbed URLs responded with HTTP 200 and matching titles.
+- Edge mobile testing opened all 13 new player panels, loaded live metadata in all 11 direct-audio hymn readers, and played the Ten-o-osht recording.
+- Verified playlist and playback speed controls, stopping audio/removing widgets on navigation, preserving audio on hymn page changes, and the player in Mary praise text mode.
+- Verified bottom search is horizontally centered, opens the existing search view, and no horizontal page overflow occurs. SoundCloud widget embedding was checked; playback within the third-party widget depends on its service.
