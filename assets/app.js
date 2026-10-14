@@ -1287,7 +1287,35 @@ const EXTRA_HYMNS = [{"id":"mary2","title":"مديح العذراء الثاني
                 saveNotesData(); activeNoteId=null; noteTitleInput.value=''; noteBodyInput.value=''; renderNotesList();
             }
             function togglePin(){if(!activeNoteId)return; const n=notesData.notes.find(x=>x.id===activeNoteId); if(n){n.pinned=!n.pinned;n.updated=Date.now();saveNotesData();openNote(n.id);}}
-            function createCollection(type){const label=type==='folder'?'اسم الـ Folder الجديد':'اسم الـ Album الجديد';const name=prompt(label);if(!name||!name.trim())return;const arr=type==='folder'?notesData.folders:notesData.albums;if(!arr.includes(name.trim()))arr.push(name.trim());saveNotesData();refreshNoteSelects();}
+            const collectionDialog=document.getElementById('collectionDialog');
+            const collectionName=document.getElementById('collectionName');
+            const collectionError=document.getElementById('collectionNameError');
+            let collectionType='folder',collectionOpener=null,collectionToastTimer=null;
+            const collectionNameKey=name=>name.normalize('NFKC').replace(/\s+/g,' ').trim().toLowerCase();
+            function closeCollectionDialog(){collectionDialog.close();if(collectionOpener?.isConnected&&collectionOpener.getClientRects().length)collectionOpener.focus();else document.getElementById('notesMenuBtn').focus();}
+            function createCollection(type){
+                flushNoteSave();collectionType=type==='album'?'album':'folder';collectionOpener=document.activeElement;notesMenu.classList.add('hidden');
+                const isFolder=collectionType==='folder';collectionDialog.dataset.kind=collectionType;
+                document.getElementById('collectionDialogTitle').textContent=isFolder?'مجلد جديد':'ألبوم جديد';
+                document.getElementById('collectionDialogDescription').textContent=isFolder?'اجمع النوتات المرتبطة ببعضها في مكان واحد.':'احتفظ بمجموعة مميزة من النوتات داخل ألبومك.';
+                document.getElementById('collectionNameLabel').textContent=isFolder?'اسم المجلد':'اسم الألبوم';
+                document.getElementById('collectionCreateBtn').textContent=isFolder?'إنشاء المجلد':'إنشاء الألبوم';
+                document.getElementById('collectionDialogIcon').innerHTML=isFolder?'<path d="M3 6h7l2 3h9v12H3z"/>':'<rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8" cy="8" r="2"/><path d="m3 17 5-5 4 4 4-6 5 7"/>';
+                collectionName.placeholder=isFolder?'مثلاً: تأملات يومية':'مثلاً: آيات أحبها';collectionName.value='';collectionName.removeAttribute('aria-invalid');collectionError.textContent='';document.getElementById('collectionNameCount').textContent='٠ / ٨٠';
+                collectionDialog.showModal();collectionName.focus();
+            }
+            document.getElementById('collectionDialogClose').onclick=closeCollectionDialog;
+            document.getElementById('collectionCancelBtn').onclick=closeCollectionDialog;
+            collectionDialog.addEventListener('cancel',event=>{event.preventDefault();closeCollectionDialog();});
+            collectionDialog.addEventListener('click',event=>{if(event.target!==collectionDialog)return;const rect=collectionDialog.getBoundingClientRect();if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)closeCollectionDialog();});
+            collectionName.addEventListener('input',()=>{collectionError.textContent='';collectionName.removeAttribute('aria-invalid');document.getElementById('collectionNameCount').textContent=toArabicDigits(collectionName.value.length)+' / ٨٠';});
+            document.getElementById('collectionDialogForm').addEventListener('submit',event=>{
+                event.preventDefault();const name=collectionName.value.replace(/\s+/g,' ').trim();const items=collectionType==='folder'?notesData.folders:notesData.albums;
+                let error='';if(!name)error='اكتب اسماً قبل الإنشاء.';else if(name.length>80)error='الاسم يجب ألا يزيد عن ٨٠ حرفاً.';else if(items.some(item=>collectionNameKey(item)===collectionNameKey(name)))error=collectionType==='folder'?'يوجد مجلد بهذا الاسم بالفعل. جرّب اسماً آخر.':'يوجد ألبوم بهذا الاسم بالفعل. جرّب اسماً آخر.';
+                if(error){collectionError.textContent=error;collectionName.setAttribute('aria-invalid','true');collectionName.focus();return;}
+                items.push(name);if(!saveNotesData()){items.pop();collectionError.textContent=notesStorageIssue;return;}
+                refreshNoteSelects();const toast=document.getElementById('notesCollectionToast');toast.textContent='تم إنشاء '+(collectionType==='folder'?'المجلد':'الألبوم')+' «'+name+'» ✓';toast.hidden=false;clearTimeout(collectionToastTimer);collectionToastTimer=setTimeout(()=>toast.hidden=true,4000);closeCollectionDialog();
+            });
             function showNotes(){hideAllMainViews();notesCard.classList.remove('hidden');bottomNav.classList.add('hidden');refreshNoteSelects();renderNotesList();if(notesStorageIssue)notesStatus.textContent=notesStorageIssue;}
 
             document.getElementById('restoreNoteBtn').onclick=()=>{flushNoteSave();const n=notesData.notes.find(n=>n.id===activeNoteId);if(n){n.deleted=false;n.updated=Date.now();saveNotesData();activeNoteId=null;renderNotesList();}};
