@@ -29,8 +29,9 @@ https://st-takla.org/lyrics/ar/rituals/doxologies/mary-adam-doxology.html
 
 ## الخطوط والأيقونات
 Cairo، Amiri وNoto Sans Coptic من Google Fonts، برخصة SIL Open Font License. ملفات الرخص والمعلومات محفوظة في assets/fonts/*-OFL.txt.
-الأيقونات SVG مرسومة في الكود، وأيقونة التطبيق متاحة بصيغتي SVG وPNG في assets/icons.
+أيقونات الواجهة SVG مرسومة في الكود. favicon وأيقونات تثبيت التطبيق الحالية محوّلة من الصورة التي قدّمها صاحب المشروع، ومتاحة بصيغتي ICO وPNG.
 
 ## القطمارس
 القراءات اليومية لا تُنسخ من خدمة القطمارس؛ يعرض التطبيق الموقع الخارجي بالإطار ورابط مباشر:
 https://katameros.app/ar/
+
