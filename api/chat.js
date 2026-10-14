@@ -17,8 +17,10 @@ function retrieve(question){const data=load(),q=normalize(question);const terms=
 const limits=new Map();
 function rateLimited(req){const ip=String(req.headers['x-forwarded-for']||req.socket?.remoteAddress||'unknown').split(',')[0];const key=crypto.createHash('sha256').update(ip).digest('hex');const now=Date.now();for(const [k,v]of limits)if(now-v.start>=60000)limits.delete(k);const v=limits.get(key)||{start:now,count:0};v.count++;limits.set(key,v);return v.count>3;}
 module.exports=async function handler(req,res){res.setHeader('Cache-Control','no-store');const fail=(code,message)=>res.status(code).json({error:message});
+ const origin=req.headers.origin;const allowed=new Set(['https://localhost',...(process.env.APP_ALLOWED_ORIGINS||'').split(',').map(x=>x.trim()).filter(Boolean)]);
+ if(origin){try{if(new URL(origin).host!==req.headers.host&&!allowed.has(origin))return fail(403,'الطلب لازم يكون من التطبيق أو الموقع.');}catch{return fail(403,'طلب غير صالح.');}res.setHeader('Access-Control-Allow-Origin',origin);res.setHeader('Vary','Origin');res.setHeader('Access-Control-Allow-Headers','Content-Type');res.setHeader('Access-Control-Allow-Methods','POST, OPTIONS');}
+ if(req.method==='OPTIONS')return res.status(204).end();
  if(req.method!=='POST'){res.setHeader('Allow','POST');return fail(405,'استخدم إرسال السؤال.');}
- const origin=req.headers.origin;if(origin){try{if(new URL(origin).host!==req.headers.host)return fail(403,'الطلب لازم يكون من نفس الموقع.');}catch{return fail(403,'طلب غير صالح.');}}
  let body=req.body;try{if(typeof body==='string')body=JSON.parse(body);}catch{return fail(400,'السؤال غير صالح.');}
  const question=typeof body?.question==='string'?body.question.trim():'';if(question.length<2||question.length>1500)return fail(400,'اكتب سؤالًا بين حرفين و١٥٠٠ حرف.');
  if(rateLimited(req)){res.setHeader('Retry-After','60');return fail(429,'وصلت للحد المؤقت. انتظر دقيقة ثم حاول تاني.');}

@@ -1,0 +1,8 @@
+{
+  "appId": "com.marcoehaab11.amegoo",
+  "appName": "التطبيق القبطي",
+  "webDir": "dist",
+  "backgroundColor": "#0f172a",
+  "server": { "androidScheme": "https" },
+  "plugins": { "SystemBars": { "insetsHandling": "css", "initialViewportFitValueHint": "cover", "style": "DARK" } }
+}

@@ -4,5 +4,24 @@
   "version": "1.0.0",
   "engines": {
     "node": "22.x"
+  },
+  "dependencies": {
+    "@capacitor/android": "8.5.3",
+    "@capacitor/app": "8.1.2",
+    "@capacitor/core": "8.5.3",
+    "@capacitor/filesystem": "8.1.4",
+    "@capacitor/share": "8.0.3"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "8.5.3",
+    "esbuild": "0.28.2"
+  },
+  "scripts": {
+    "mobile:build": "node scripts/build-mobile.cjs",
+    "android:sync": "npm run mobile:build && npx cap sync android",
+    "android:open": "npx cap open android"
+  },
+  "overrides": {
+    "uuid": "11.1.1"
   }
 }

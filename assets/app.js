@@ -273,7 +273,7 @@
 
             function hideAllMainViews() {
                 window.stopHymnAudio?.();
-                document.querySelectorAll('#copticCard,#favoritesCard,#faithChatCard').forEach(card=>card.classList.add('hidden'));
+                document.querySelectorAll('#copticCard,#favoritesCard,#faithChatCard,#settingsCard').forEach(card=>card.classList.add('hidden'));
                 readingTools?.classList.add('hidden');
                 flushNoteSave();
                 dashboardCard.classList.add('hidden');
@@ -716,7 +716,7 @@
 
             let agFont = 1.4;
             try { agFont = parseFloat(localStorage.getItem('ag:font')) || 1.4; } catch (e) {}
-            const applyAgFont = () => { agReaderContent.style.setProperty('--ag-fs', agFont + 'rem'); try { localStorage.setItem('ag:font', agFont); } catch (e) {} };
+            const applyAgFont = () => { agReaderContent.style.setProperty('--ag-fs', agFont + 'rem'); try { localStorage.setItem('ag:font', agFont); } catch (e) {} window.AppSettings?.syncFont(agFont); };
             applyAgFont();
             document.getElementById('agFontUp').addEventListener('click', () => { agFont = Math.min(1.8, +(agFont + 0.1).toFixed(2)); applyAgFont(); });
             document.getElementById('agFontDown').addEventListener('click', () => { agFont = Math.max(0.9, +(agFont - 0.1).toFixed(2)); applyAgFont(); });
@@ -1340,7 +1340,7 @@ const EXTRA_HYMNS = [{"id":"mary2","title":"مديح العذراء الثاني
             function showNotes(){hideAllMainViews();notesCard.classList.remove('hidden');bottomNav.classList.add('hidden');refreshNoteSelects();renderNotesList();if(notesStorageIssue)notesStatus.textContent=notesStorageIssue;}
 
             document.getElementById('restoreNoteBtn').onclick=()=>{flushNoteSave();const n=notesData.notes.find(n=>n.id===activeNoteId);if(n){n.deleted=false;n.updated=Date.now();saveNotesData();activeNoteId=null;renderNotesList();}};
-            document.getElementById('exportNotesBtn').onclick=()=>{flushNoteSave();const blob=new Blob([JSON.stringify({version:1,...notesData},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='coptic-notes-'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);};
+            document.getElementById('exportNotesBtn').onclick=async()=>{flushNoteSave();if(window.NativeApp){try{await window.NativeApp.shareBackup(JSON.stringify({version:1,...notesData},null,2));}catch{notesStatus.textContent='لم تكتمل مشاركة النسخة.';}return;}const blob=new Blob([JSON.stringify({version:1,...notesData},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='coptic-notes-'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1000);};
             document.getElementById('importNotesBtn').onclick=()=>document.getElementById('importNotesFile').click();
             document.getElementById('importNotesFile').onchange=async e=>{
                 const file=e.target.files[0];if(!file)return;flushNoteSave();
@@ -1480,8 +1480,8 @@ const EXTRA_HYMNS = [{"id":"mary2","title":"مديح العذراء الثاني
             document.getElementById('favoritesBtn').onclick=showFavorites;document.getElementById('backFromFavoritesBtn').onclick=showMainApp;
             document.getElementById('continueReadingBtn').onclick=()=>{try{const value=JSON.parse(localStorage.getItem('coptic:lastReading'));const result=readingResult(value);if(result)openSearchResult(result);}catch(e){}};
             let readerFont=1.45;try{readerFont=Math.max(.95,Math.min(2.2,Number(localStorage.getItem('coptic:readerFont'))||1.45));}catch(e){}
-            function applyReaderFont(){document.documentElement.style.setProperty('--reader-font',readerFont+'rem');try{localStorage.setItem('coptic:readerFont',readerFont);}catch(e){}}
-            document.getElementById('readerFontUp').onclick=()=>{readerFont=Math.min(2.2,+(readerFont+.1).toFixed(2));applyReaderFont();};document.getElementById('readerFontDown').onclick=()=>{readerFont=Math.max(.95,+(readerFont-.1).toFixed(2));applyReaderFont();};applyReaderFont();refreshContinueButton();
+            function applyReaderFont(){document.documentElement.style.setProperty('--reader-font',readerFont+'rem');try{localStorage.setItem('coptic:readerFont',readerFont);}catch(e){}window.AppSettings?.syncFont(readerFont);}
+            document.getElementById('readerFontUp').onclick=()=>{readerFont=Math.min(2.2,+(readerFont+.1).toFixed(2));applyReaderFont();};document.getElementById('readerFontDown').onclick=()=>{readerFont=Math.max(.95,+(readerFont-.1).toFixed(2));applyReaderFont();};applyReaderFont();refreshContinueButton();window.setAppReaderFont=(n)=>{readerFont=n;agFont=n;applyReaderFont();applyAgFont();};
 
 
 
@@ -1489,7 +1489,7 @@ const EXTRA_HYMNS = [{"id":"mary2","title":"مديح العذراء الثاني
             window.addEventListener('beforeinstallprompt',event=>{event.preventDefault();installPrompt=event;installButton.hidden=false;});
             installButton.onclick=async()=>{if(!installPrompt)return;await installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;installButton.hidden=true;};
             window.addEventListener('appinstalled',()=>{installButton.hidden=true;});
-            if('serviceWorker' in navigator&&location.protocol!=='file:'){
+            if('serviceWorker' in navigator&&location.protocol!=='file:'&&!window.APP_RUNTIME?.native){
                 navigator.serviceWorker.register('sw.js').then(registration=>{
                     const status=document.getElementById('offlineStatus');const ready=()=>status.textContent='القراءة جاهزة بدون إنترنت. تسجيلات الألحان الجديدة والقطمارس تحتاج اتصالًا.';
                     if(registration.active)ready();const worker=registration.installing||registration.waiting;if(worker)worker.addEventListener('statechange',()=>{if(worker.state==='activated')ready();});

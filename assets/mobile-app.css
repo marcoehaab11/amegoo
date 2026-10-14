@@ -1,0 +1,29 @@
+:root{--app-top:var(--safe-area-inset-top,env(safe-area-inset-top,0px));--app-bottom:var(--safe-area-inset-bottom,env(safe-area-inset-bottom,0px))}
+body{padding-top:calc(12px + var(--app-top));padding-bottom:calc(150px + var(--app-bottom))}
+body:has(:is(#chapterReaderCard,#deepTopicReaderCard,#agpeyaReaderCard,#infoCard,#katamerosCard):not(.hidden)){padding-top:var(--app-top);--reading-footer:calc(132px + var(--app-top) + var(--app-bottom))}
+.bottom-nav{bottom:calc(12px + var(--app-bottom))}.reading-tools{bottom:calc(70px + var(--app-bottom))}
+#settingsOpen{position:fixed;left:16px;top:calc(14px + var(--app-top));z-index:55;width:40px;height:40px;display:grid;place-items:center;border:1px solid #526079;border-radius:12px;background:#1b293d;color:#cbd5e1;cursor:pointer}
+#settingsOpen svg{width:22px;height:22px}#settingsOpen:hover{color:var(--gold-color);border-color:var(--gold-color)}
+body:has(#settingsCard:not(.hidden)) #settingsOpen{display:none}
+#dashboardCard{padding-top:28px;border-radius:24px;background:linear-gradient(145deg,#20304a,#152135)}
+#dashboardCard .header{padding:4px 24px}.app-item{border-radius:20px!important;transition:transform .2s,background .2s}.app-item:hover{transform:translateY(-3px)}
+#settingsCard{max-width:950px;text-align:right;padding:24px 18px;border-radius:24px;background:#152135}
+.settings-hero{display:flex;gap:14px;align-items:center;margin:20px 0}.settings-hero img{width:58px;height:58px;border-radius:16px}.settings-hero h2{font-size:1.5rem}.settings-hero p{color:#94a3b8;font-size:.85rem;line-height:1.7}
+.settings-group{background:#1b293d;border:1px solid #35445d;border-radius:18px;padding:18px;margin:16px 0}.settings-group h3{color:var(--gold-color);font-size:1rem;margin-bottom:14px}
+.settings-row{display:flex;gap:18px;align-items:center;justify-content:space-between;padding:12px 0;border-bottom:1px solid #47556955}.settings-row:last-child{border-bottom:0}.settings-row label{font-size:.95rem}.settings-row small{display:block;color:#b8c6d8;font-size:.78rem;line-height:1.7;margin-top:4px}.settings-row select{width:auto;min-width:115px;max-width:48%;border-radius:10px;padding:9px;background:#111b2b;color:#f1f5f9;border:1px solid #526079;font:inherit;font-size:.85rem}.settings-row input[type=checkbox]{width:24px;height:24px;accent-color:#f59e0b}.settings-font{width:100%;accent-color:#f59e0b;min-height:36px}.settings-example{font:1.4rem/2 Amiri,serif;background:#111b2b;padding:14px;border-radius:12px;margin-top:10px}.settings-actions{display:flex;gap:10px;flex-wrap:wrap}.settings-actions button{min-height:46px}.settings-info{line-height:1.9;font-size:.9rem;color:#b8c6d8}.settings-info a{color:var(--gold-color)}
+#appToast{position:fixed;bottom:calc(145px + var(--app-bottom));left:50%;transform:translateX(-50%);z-index:200;max-width:90%;padding:10px 18px;border-radius:12px;background:#334155;color:#fff;box-shadow:0 8px 30px #0004;font-size:.85rem;text-align:center}
+[data-reduce-motion=true] *,[data-reduce-motion=true] *::before,[data-reduce-motion=true] *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+:root[data-theme=light]{--primary-bg:#f5f1e9;--card-bg:#fffdf9;--text-color:#253244;--text-muted:#5a6575;--gold-color:#996318}
+[data-theme=light] body{background:#f5f1e9;color:#253244}
+[data-theme=light] .selection-card,[data-theme=light] #dashboardCard,[data-theme=light] #settingsCard{background:#fffdf9;border-color:#e0d9ca;color:#253244;box-shadow:0 8px 30px #2f3a4c0d}
+[data-theme=light] :is(#chapterReaderCard,#deepTopicReaderCard,#agpeyaReaderCard,#infoCard,#katamerosCard){background:#f5f1e9}
+[data-theme=light] :is(#chapterContent,#deepReaderContent,#agReaderContent,#infoCardContent,#katContent),[data-theme=light] #infoCardContent:has(.kh-search){background:#fffdf9;color:#253244}
+[data-theme=light] .header h2{background:none;color:#253244;-webkit-text-fill-color:currentColor}
+[data-theme=light] .app-item,[data-theme=light] .list-item,[data-theme=light] .search-result,[data-theme=light] .settings-group,[data-theme=light] .faith-message,[data-theme=light] .kh-section{background:#fffdf9;border-color:#dfd7c7;color:#253244}
+[data-theme=light] .chapter-toolbar,[data-theme=light] .bottom-nav,[data-theme=light] .reading-tools,[data-theme=light] .christos-toolbar,[data-theme=light] .hymn-audio,[data-theme=light] .settings-example{background:#ece7dd;border-color:#d5cbb8;color:#253244}
+[data-theme=light] .kh-button,[data-theme=light] .kh-select,[data-theme=light] .kh-search,[data-theme=light] .settings-row select,[data-theme=light] #settingsOpen,[data-theme=light] .hymn-audio-options select{background:#fffdf9;color:#253244;border-color:#c7beae}
+[data-theme=light] .kh-note,[data-theme=light] .settings-info,[data-theme=light] .settings-row small,[data-theme=light] .header p,[data-theme=light] .hymn-audio-caption,[data-theme=light] .hymn-audio-status,[data-theme=light] .book-subtitle,[data-theme=light] .christos-counter{color:#586477}
+[data-theme=light] #faithChatInput,[data-theme=light] .notes-body-input,[data-theme=light] .notes-title-input{background:#fffdf9;color:#253244}
+[data-theme=light] .faith-loading-dialog{background:#fffdf9;color:#253244;border-color:#c7beae}[data-theme=light] .faith-loading-dialog p{color:#586477}[data-theme=light] .faith-loading-dialog h2{color:#996318}
+[data-theme=light] #faithChatSend{background:#fbbf24;color:#172033}[data-theme=light] #faithChatClear{color:#334155}
+@media(max-width:600px){#settingsCard{padding:20px 14px}.settings-group{padding:14px}.settings-row{gap:10px}.settings-hero{padding-left:26px}.app-title{font-size:.85rem}#dashboardCard .header h2{font-size:1.35rem}}
