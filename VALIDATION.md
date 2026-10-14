@@ -19,3 +19,8 @@
 لم يُختبر عنوان Vercel منشور؛ الرابط الذي ورد أثناء التنفيذ كان Google Meet. تم التحقق من مسار القطمارس العربي وطريقة التاريخ في الموقع الخارجي، لكن القطمارس يظل خدمة مستقلة تحتاج اتصالاً.
 
 إضافة لاحقة: نجح اختبار نافذة إنشاء المجلد والألبوم على الموبايل والكمبيوتر، بما فيه الاسم الفارغ والمكرر، التركيز، الإنشاء بـEnter، والإلغاء بـEscape أو الخلفية، وحفظ المجموعة، دون استخدام prompt المتصفح.
+
+## Supplied second Virgin praise
+- Three native text SVG pages checked in Edge: embedded fonts loaded, no raster image elements, and no column overflow.
+- Verified pagination, original-image comparison, zoom, text reading, search, and offline reader/direct SVG navigation.
+

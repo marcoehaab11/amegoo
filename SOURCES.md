@@ -19,8 +19,8 @@ https://st-takla.org/Lyrics-Spiritual-Songs/Words-of-Coptic-Alhan-Tasbeha-Kodas/
 الهوس الثالث، النص العربي لتسبحة الفتية الثلاثة:
 https://st-takla.org/Lyrics-Spiritual-Songs/Words-of-Coptic-Alhan-Tasbeha-Kodas/Arabic-Coptic-04-Epsalmodia-Tasbeha/Tasbe7a-Coptic-Transliteration-Annual-Psalmody/Praise-Epsalmodya-Tasbeha-008-Hus-3.html
 
-مديح العذراء الثاني في النسخة الحالية هو الطرح التقليدي «طوباك أنت يا مريم الملكة»:
-https://st-takla.org/lyrics/ar/rituals/doxologies/mary-adam-doxology.html
+مديح العذراء الثاني الحالي أُعيد كتابته من الصفحات الثلاث التي قدمها صاحب المشروع: ثيؤطوكية يوم الأحد — القطعة التاسعة، مديح للعذراء، ومديح ثاني للعذراء على افموتي.
+ملفات SVG تحتوي نصوصاً متجهية وخط Amiri مضمناً، وليست صور JPEG داخل SVG. الصور الأصلية والنص المستخرج محفوظة للمقارنة في assets/hymns/mary2.
 
 الصور والصوت المنقولان من ملف HTML الأصلي الذي قدمه صاحب المشروع محفوظان في assets/media. لم تُضف تسجيلات جديدة أو صور هزات جديدة.
 
