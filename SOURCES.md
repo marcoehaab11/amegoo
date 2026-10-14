@@ -38,3 +38,7 @@ https://katameros.app/ar/
 
 ## Teaching books
 The four teaching books are original simplified educational prose prepared for this application, with Bible reading references and devotional prompts. They are not reproductions of published books. Reference links are listed within each book; all book text is stored locally in assets/data/education.js.
+
+## Third Hos scans
+The six supplied original scans are displayed in printed page order 244, 245, 246, 247, 248, 249, retaining the Arabic, Coptic and pronunciation columns.
+

@@ -27,3 +27,7 @@
 
 ## Teaching book readers
 Verified all four books (26 chapters), chapter contents navigation, return to contents, mobile width, offline reading and search into the expanded text.
+
+## Third Hos reader
+Verified printed page ordering 244–249, six offline images, previous/next boundaries, zoom and mobile layout.
+
