@@ -1,0 +1,44 @@
+@font-face {
+  font-family: 'Amiri';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/7f19c4a5dc77b0ef.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Amiri';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(fonts/65e3e6fe6af66bb6.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Cairo';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(fonts/7ecb9b6a465072bc.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Cairo';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url(fonts/ed4acaa1f0bc9976.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Cairo';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(fonts/cad8564334938a58.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Cairo';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url(fonts/accb750bc74f1b44.ttf) format('truetype');
+}
+
+@font-face{font-family:'Noto Sans Coptic';font-style:normal;font-weight:400;font-display:swap;src:url('fonts/NotoSansCoptic-Regular.ttf') format('truetype');}
