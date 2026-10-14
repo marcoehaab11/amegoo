@@ -41,3 +41,6 @@ The four teaching books are original simplified educational prose prepared for t
 
 ## Third Hos scans
 The six supplied original scans are displayed in printed page order 244, 245, 246, 247, 248, 249, retaining the Arabic, Coptic and pronunciation columns.
+# Faith chat provider
+
+Gamaliel API documentation: https://developer.gamaliel.ai/docs/ . The chat uses `default` theology plus application-specific instructions and retrieved local texts. The provider's public theology list did not include a Coptic Orthodox option at implementation time. AI answers are generated explanations, not ecclesiastically approved teaching. References shown in the chat are local passages and original application teaching sections; unnumbered references in a generated answer should also be checked.

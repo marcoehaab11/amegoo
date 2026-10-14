@@ -272,7 +272,7 @@
             let currentChapter = 1;
 
             function hideAllMainViews() {
-                document.querySelectorAll('#copticCard,#favoritesCard').forEach(card=>card.classList.add('hidden'));
+                document.querySelectorAll('#copticCard,#favoritesCard,#faithChatCard').forEach(card=>card.classList.add('hidden'));
                 readingTools?.classList.add('hidden');
                 flushNoteSave();
                 dashboardCard.classList.add('hidden');

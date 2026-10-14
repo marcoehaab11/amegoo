@@ -30,3 +30,9 @@ Verified all four books (26 chapters), chapter contents navigation, return to co
 
 ## Third Hos reader
 Verified printed page ordering 244–249, six offline images, previous/next boundaries, zoom and mobile layout.
+# Faith chat checks
+
+- Live hosted-provider requests returned Arabic answers for the Trinity and John 3:16; the latter used the supplied local verse with a numbered reference. This verifies connectivity and representative responses, not general theological accuracy.
+- API tests covered explicit verse context, teaching retrieval, input and origin validation, filtered history, no-store responses, provider errors/timeouts and per-instance rate limits.
+- Edge mobile checks covered chat/source display, HTML injection as harmless text, navigation, new conversations, page-memory history, provider error messages, mobile width and offline status.
+- Vercel deployment configuration includes the local corpus. The deployed website itself has not been tested because its URL is not available in this chat.

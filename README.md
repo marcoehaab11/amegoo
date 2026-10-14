@@ -25,3 +25,11 @@
 البيانات
 لا تتطلب النسخة حساباً أو خادماً للملاحظات. النوتات والمفضلة والتقدم تُحفظ في متصفح الجهاز؛ التصدير هو وسيلة نقل النوتات إلى جهاز آخر.
 تفاصيل المراجع والحقوق في SOURCES.md.
+# Faith study chat
+
+The dashboard includes **اسأل عن الإيمان**, an Arabic AI study chat backed by `api/chat.js` on Vercel. The server retrieves passages and teaching sections from this project's local library and sends them, the question, and up to six preceding messages to Gamaliel. Supporting texts are available beneath the answer. Generated answers still require review; the provider has no dedicated Coptic Orthodox preset. The application uses the general Christian preset with Coptic study instructions and local context.
+
+Deploy the repository as a Vercel project; `vercel.json` packages the local data files with the Node.js function. No frontend key is needed. Hosted Gamaliel access works without a key, is limited to 3 requests/minute per upstream IP, and has no availability guarantee. Requests from a Vercel function may share that upstream allowance. For caller-paid access, configure `GAMALIEL_API_KEY` in Vercel Environment Variables; optionally set `GAMALIEL_MODEL`. Never add keys to HTML, browser JavaScript, or Git. The app also applies a best-effort 3/minute limit per client in each function instance; this is not a durable global quota.
+
+Chat needs internet and Vercel functions; static hosting alone cannot run `/api/chat`. Messages stay in page memory and are not written to localStorage or application files. The external provider receives the messages required to answer. API responses use `no-store` and are excluded from the service-worker cache. Provider failures and limits appear as retry messages, preserving the draft question.
+

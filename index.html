@@ -28,6 +28,7 @@
         <div class="header-links"><button type="button" class="kh-button" id="favoritesBtn">المفضلة ★</button><button type="button" class="kh-button" id="continueReadingBtn" hidden>تابع آخر قراءة</button><button type="button" class="kh-button" id="installAppBtn" hidden>تثبيت التطبيق</button></div>
         <p id="offlineStatus" class="kh-note" aria-live="polite">النصوص محفوظة مع ملفات التطبيق. القطمارس يحتاج اتصالاً بالإنترنت.</p>
         <div class="app-grid">
+<button type="button" class="app-item" id="faithChatBtn"><div class="app-icon"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 3h16v13H9l-5 5V3Z"/><path d="M12 6v7M9 9h6"/></svg></div><span class="app-title">اسأل عن الإيمان</span></button>
             <div class="app-item" id="bibleCardBtn">
                 <div class="app-icon"><svg class="icon fa-solid fa-book-bible" style="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h7c2 0 2 2 2 2s0-2 2-2h7v15h-7c-2 0-2 2-2 2s0-2-2-2H3z"/><path d="M12 7v15"/></svg></div>
                 <span class="app-title">الكتاب المقدس</span>
@@ -67,6 +68,16 @@
     <div class="selection-card dashboard-card hidden" id="copticCard"><button type="button" class="btn-back" id="backFromCopticBtn">العودة للرئيسية</button><div class="header"><h2>تعلم اللغة القبطية</h2><p>حروف، دروس قصيرة، وتدريب تفاعلي</p></div><div id="copticContent"></div></div>
 
     <div class="selection-card dashboard-card hidden" id="favoritesCard"><button type="button" class="btn-back" id="backFromFavoritesBtn">العودة للرئيسية</button><div class="header"><h2>المفضلة</h2></div><div id="favoritesContent"></div></div>
+    <div class="selection-card dashboard-card hidden faith-chat-card" id="faithChatCard">
+      <button type="button" class="btn-back" id="faithChatBack">العودة للرئيسية</button>
+      <div class="header"><h2>اسأل عن الإيمان</h2><p>اسأل عن آية أو موضوع، واقرأ النصوص مع الإجابة.</p></div>
+      <p class="kh-note">مساعد AI للدراسة، يستعين بمكتبة التطبيق. إجاباته تحتاج مراجعة، والأسئلة الرعوية الشخصية تُناقَش مع أب الاعتراف.</p>
+      <p class="kh-note">السؤال وآخر رسائل المحادثة تُرسل لخدمة Gamaliel للإجابة. المحادثة لا تُحفظ على جهازك بعد تحديث الصفحة. يحتاج إنترنت، والخدمة المجانية قد تنشغل.</p>
+      <div class="faith-suggestions"><button type="button" class="kh-button" data-faith-question="اشرح معنى الثالوث">ما معنى الثالوث؟</button><button type="button" class="kh-button" data-faith-question="اشرح قانون الإيمان">شرح قانون الإيمان</button><button type="button" class="kh-button" data-faith-question="اشرح يوحنا 3:16">يوحنا ٣:١٦</button></div>
+      <div id="faithChatMessages" class="faith-messages" role="log" aria-label="محادثة الإيمان" aria-live="polite"></div>
+      <form id="faithChatForm"><label for="faithChatInput">سؤالك</label><textarea id="faithChatInput" maxlength="1500" minlength="2" required rows="3" placeholder="اكتب سؤالك أو مرجع الآية…"></textarea><div class="faith-actions"><button type="submit" class="kh-button" id="faithChatSend">إرسال السؤال</button><button type="button" class="kh-button" id="faithChatClear">محادثة جديدة</button></div></form>
+      <p id="faithChatStatus" class="kh-note" role="status"></p>
+    </div>
     <!-- Notes / Notepad -->
     <div class="selection-card dashboard-card notes-card hidden" id="notesCard">
         <button type="button" class="btn-back" id="backToDashboardFromNotesBtn"><svg class="icon fa-solid fa-arrow-right" style="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10 5 7 7-7 7M17 12H3"/></svg><span>العودة للرئيسية</span></button>
@@ -338,5 +349,6 @@
     <script src="assets/data/deuterocanonical.js" defer></script>
     <script src="assets/data/education.js" defer></script>
     <script src="assets/app.js" defer></script>
+    <script src="assets/faith-chat.js" defer></script>
 </body>
 </html>
