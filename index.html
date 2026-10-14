@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="assets/fonts.css">
     <link rel="stylesheet" href="assets/app.css">
     <link rel="stylesheet" href="assets/reading-layout.css">
+    <link rel="stylesheet" href="assets/faith-loading.css">
 </head>
 <body>
 
@@ -75,7 +76,7 @@
       <p class="kh-note">السؤال وآخر رسائل المحادثة تُرسل لخدمة Gamaliel للإجابة. المحادثة لا تُحفظ على جهازك بعد تحديث الصفحة. يحتاج إنترنت، والخدمة المجانية قد تنشغل.</p>
       <div class="faith-suggestions"><button type="button" class="kh-button" data-faith-question="اشرح معنى الثالوث">ما معنى الثالوث؟</button><button type="button" class="kh-button" data-faith-question="اشرح قانون الإيمان">شرح قانون الإيمان</button><button type="button" class="kh-button" data-faith-question="اشرح يوحنا 3:16">يوحنا ٣:١٦</button></div>
       <div id="faithChatMessages" class="faith-messages" role="log" aria-label="محادثة الإيمان" aria-live="polite"></div>
-      <form id="faithChatForm"><label for="faithChatInput">سؤالك</label><textarea id="faithChatInput" maxlength="1500" minlength="2" required rows="3" placeholder="اكتب سؤالك أو مرجع الآية…"></textarea><div class="faith-actions"><button type="submit" class="kh-button" id="faithChatSend">إرسال السؤال</button><button type="button" class="kh-button" id="faithChatClear">محادثة جديدة</button></div></form>
+      <form id="faithChatForm"><label for="faithChatInput">سؤالك</label><textarea id="faithChatInput" maxlength="1500" minlength="2" required rows="3" placeholder="اكتب سؤالك أو مرجع الآية…"></textarea><div class="faith-actions"><button type="submit" class="kh-button" id="faithChatSend"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="m22 2-7 20-4-9-9-4 20-7ZM22 2 11 13"/></svg> إرسال السؤال</button><button type="button" class="kh-button" id="faithChatClear"><span aria-hidden="true">＋</span> محادثة جديدة</button></div></form>
       <p id="faithChatStatus" class="kh-note" role="status"></p>
     </div>
     <!-- Notes / Notepad -->
@@ -331,6 +332,13 @@
     </nav>
 
 
+    <dialog id="faithLoadingDialog" class="faith-loading-dialog" aria-labelledby="faithLoadingTitle" aria-describedby="faithLoadingDescription" dir="rtl">
+        <div class="faith-loading-orbit" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 5h7c2 0 2 2 2 2s0-2 2-2h7v15h-7c-2 0-2 2-2 2s0-2-2-2H3zM12 7v15"/></svg></div>
+        <h2 id="faithLoadingTitle">بجهّز لك الإجابة</h2>
+        <p id="faithLoadingDescription">براجع النصوص المرتبطة بسؤالك. الإجابة هتظهر هنا أول ما تجهز.</p>
+        <div class="faith-loading-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+        <button type="button" id="faithLoadingCancel">إلغاء الانتظار</button>
+    </dialog>
     <dialog id="collectionDialog" class="collection-dialog" aria-labelledby="collectionDialogTitle" aria-describedby="collectionDialogDescription" data-kind="folder">
         <button type="button" id="collectionDialogClose" class="collection-close" aria-label="إغلاق النافذة">×</button>
         <div class="collection-symbol" aria-hidden="true"><svg id="collectionDialogIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h7l2 3h9v12H3z"/></svg></div>

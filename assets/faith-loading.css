@@ -1,0 +1,18 @@
+#faithChatSend{display:inline-flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,#fbbf24,#f59e0b);border-color:#fbbf24;color:#101827;font-weight:800;box-shadow:0 4px 16px #f59e0b24}
+#faithChatSend:hover{background:#fcd34d}
+#faithChatClear{display:inline-flex;align-items:center;justify-content:center;gap:6px;background:transparent;border-color:#64748b;color:#e2e8f0;box-shadow:none}
+.faith-suggestions .kh-button{flex:0 1 auto;background:#172b43;color:#c5ddf8;border-color:#35577a;border-radius:999px;font-size:.82rem}
+.faith-chat-card button:focus-visible,.faith-loading-dialog button:focus-visible{outline:3px solid #93c5fd;outline-offset:3px}
+.faith-loading-dialog{position:fixed;inset:0;margin:auto;width:min(90vw,390px);padding:30px 24px;border:1px solid #526078;border-radius:24px;background:linear-gradient(150deg,#20304a,#111c2e);color:#f1f5f9;text-align:center;box-shadow:0 24px 90px #0008;font-family:Cairo,sans-serif}
+.faith-loading-dialog::backdrop{background:#061020bd;backdrop-filter:blur(6px)}
+.faith-loading-dialog h2{font-size:1.35rem;margin:20px 0 12px;color:#fcd34d}
+.faith-loading-dialog p{font-size:.95rem;line-height:1.9;color:#cad5e3}
+.faith-loading-orbit{position:relative;margin:0 auto;width:76px;height:76px;display:grid;place-items:center;color:#fbbf24}
+.faith-loading-orbit::before{content:'';position:absolute;inset:0;border:3px solid #fbbf2426;border-top-color:#fbbf24;border-radius:50%;animation:faith-orbit 1.3s linear infinite}
+.faith-loading-orbit svg{width:34px;height:34px}
+.faith-loading-dots{display:flex;justify-content:center;gap:7px;margin:20px 0}
+.faith-loading-dots span{width:7px;height:7px;background:#fbbf24;border-radius:50%;animation:faith-dot 1.2s ease-in-out infinite}
+.faith-loading-dots span:nth-child(2){animation-delay:.15s}.faith-loading-dots span:nth-child(3){animation-delay:.3s}
+#faithLoadingCancel{padding:9px 16px;min-height:44px;background:transparent;color:#cbd5e1;border:1px solid #526078;border-radius:10px;font:inherit;font-size:.85rem;cursor:pointer}
+@keyframes faith-orbit{to{transform:rotate(360deg)}}@keyframes faith-dot{50%{opacity:.3;transform:translateY(-4px)}}
+@media(prefers-reduced-motion:reduce){.faith-loading-orbit::before,.faith-loading-dots span{animation:none}}
