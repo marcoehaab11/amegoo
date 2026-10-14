@@ -71,3 +71,6 @@ body:has(:is(#chapterReaderCard,#deepTopicReaderCard,#agpeyaReaderCard,#infoCard
 
 /* Recording controls and centered search navigation. */
 .hymn-audio{max-width:1120px;margin:0 auto 16px;padding:12px;background:#1b293d;border:1px solid #3b4b61;border-radius:12px;text-align:right}.hymn-audio h3{font-size:1rem;color:var(--gold-color);margin-bottom:8px}.hymn-audio audio,.hymn-audio iframe{display:block;width:100%;border:0;border-radius:8px}.hymn-audio audio{height:44px}.hymn-audio-caption,.hymn-audio-status{font-size:.78rem;line-height:1.7;margin-top:8px;color:#cbd5e1}.hymn-audio-caption a{color:var(--gold-color)}.hymn-audio-options{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}.hymn-audio-options select{flex:1;min-width:120px;max-width:100%;padding:8px;color:inherit;background:#111b2b;border:1px solid #475569;border-radius:8px;font:inherit;font-size:.8rem}.bottom-nav{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));direction:rtl}#navHomeBtn{grid-column:1}#navSearchBtn{grid-column:2}
+
+/* Three persistent destinations, right to left. */
+#navFaithBtn{grid-column:1;grid-row:1}#navHomeBtn{grid-column:2;grid-row:1}#navSearchBtn{grid-column:3;grid-row:1}.bottom-nav .nav-item{min-width:0}.bottom-nav .nav-item span{font-size:.72rem;white-space:nowrap}

@@ -298,7 +298,7 @@
             }
 
             function setNavActive(activeBtn) {
-                [navHomeBtn, navSearchBtn].forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('#bottomNav .nav-item').forEach(btn => btn.classList.remove('active'));
                 activeBtn.classList.add('active');
             }
 
