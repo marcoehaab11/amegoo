@@ -24,3 +24,5 @@ $env:JAVA_HOME = 'C:\Program Files\Android\Android Studio\jbr'
 $env:ANDROID_HOME = 'C:\Users\Marco Ehab\AppData\Local\Android\Sdk'
 $env:JAVA_TOOL_OPTIONS = '-Djava.nio.channels.spi.SelectorProvider=sun.nio.ch.WindowsSelectorProvider -Djdk.net.unixdomain.tmpdir=C:\Windows\Temp'
 ```
+
+Daily verses use the app-owned DailyVerse Capacitor plugin and one inexact Android alarm. Sources are assets/data/daily-verses.json, extracted verbatim from the bundled Bible. Notification scheduling needs no backend, exact-alarm permission or signing secret. Version 1.0.1 (code 2) replaces the initial test build.

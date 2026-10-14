@@ -1472,6 +1472,7 @@ const EXTRA_HYMNS = [{"id":"mary2","title":"مديح العذراء الثاني
                 if(value.type==='teaching'){const topic=window.APP_TEACHINGS.find(t=>t.id===value.id);return topic?{type:'teaching',title:topic.title,target:{id:value.id}}:null;}
                 if(value.type==='lesson'){const lesson=window.APP_LEARNING.lessons.find(l=>l.id===value.id);return lesson?{type:'lesson',title:lesson.title,target:{id:value.id}}:null;}return null;
             }
+            window.openDailyVerseChapter = v => openSearchResult({type:'bible',target:{nr:v.nr,ch:v.chapter,verse:v.verse}});
             function refreshContinueButton(){const button=document.getElementById('continueReadingBtn');try{const saved=JSON.parse(localStorage.getItem('coptic:lastReading')||'null');const result=saved?readingResult(saved):null;button.hidden=!result;if(result)button.textContent='تابع: '+result.title;}catch(e){button.hidden=true;}}
             function rememberReading(value){if(value.type==='hymn')window.attachHymnAudio?.(value.index);try{localStorage.setItem('coptic:lastReading',JSON.stringify(value));}catch(e){}const result=readingResult(value);if(result)updateFavoriteControl(result);refreshContinueButton();}
             function updateFavoriteControl(result){currentReadingResult={type:result.type,title:result.title,target:result.target};favoriteButton.textContent=favorites.some(x=>resultKey(x)===resultKey(result))?'إزالة من المفضلة ★':'أضف للمفضلة ☆';readingTools.classList.remove('hidden');}
