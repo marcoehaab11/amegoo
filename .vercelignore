@@ -1,0 +1,11 @@
+android/
+mobile/
+scripts/
+dist/
+.github/
+node_modules/
+store/
+ANDROID_BUILD.md
+ANDROID_TESTING.md
+ANDROID_PLAN.md
+capacitor.config.json

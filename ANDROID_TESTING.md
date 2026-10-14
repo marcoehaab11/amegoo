@@ -10,3 +10,13 @@
 - Store phone images are web-layout previews, not screenshots proving operation on physical Android hardware. Real device tests, AI feedback delivery, publisher signing and Play Console requirements remain before a production release.
 
 The pre-existing emulator was unresponsive at the system level. A separate workspace-scoped emulator was created for verification; native runtime results, where available, are recorded below.
+
+## Actual Android WebView runtime
+
+- Installed and launched the APK on a fresh API 36.1 workspace-scoped emulator, with software rendering.
+- Connected to the app's own WebView with Playwright's Android API. Native bridge initialization, settings, dark theme, stored font preferences and screen navigation passed.
+- Disabled networking through CDP, reloaded the application and opened John and the first Agpeya hour successfully from the packaged assets. More than 20 verse markers and the Agpeya absolution were present offline.
+- Re-enabled networking and obtained an HTTP 200 Arabic AI answer from the deployed HTTPS backend through the actual Android WebView origin. Production CORS preflight also returned HTTP 204.
+- Native reading/settings screenshots captured from the app's WebView. This is emulator verification, not physical-device certification.
+- The Android system UI in the emulator intermittently displayed an ANR dialog. Physical hardware-back and share-sheet interaction could not be certified in this environment; they remain explicit real-device checks. In-app back buttons and native initialization were verified.
+- Backup restore tests verified restoration of notes and font/speed settings, and preservation of previous notes when a simulated storage write fails.
