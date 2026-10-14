@@ -24,3 +24,6 @@
 - Three native text SVG pages checked in Edge: embedded fonts loaded, no raster image elements, and no column overflow.
 - Verified pagination, original-image comparison, zoom, text reading, search, and offline reader/direct SVG navigation.
 
+
+## Teaching book readers
+Verified all four books (26 chapters), chapter contents navigation, return to contents, mobile width, offline reading and search into the expanded text.

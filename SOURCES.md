@@ -35,3 +35,6 @@ Cairo، Amiri وNoto Sans Coptic من Google Fonts، برخصة SIL Open Font Li
 القراءات اليومية لا تُنسخ من خدمة القطمارس؛ يعرض التطبيق الموقع الخارجي بالإطار ورابط مباشر:
 https://katameros.app/ar/
 
+
+## Teaching books
+The four teaching books are original simplified educational prose prepared for this application, with Bible reading references and devotional prompts. They are not reproductions of published books. Reference links are listed within each book; all book text is stored locally in assets/data/education.js.
