@@ -26,7 +26,7 @@
             --gold-glow: rgba(245, 158, 11, 0.35);
             --border-radius: 24px;
             --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-            
+
             /* WhatsApp Theme Colors */
             --wa-bg: #0b141a;
             --wa-card: #111b21;
@@ -429,7 +429,7 @@
         }
         .scrollable-list::-webkit-scrollbar { width: 5px; }
         .scrollable-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 10px; }
-        
+
         .list-item {
             background: rgba(255, 255, 255, 0.04);
             border: 1px solid rgba(255, 255, 255, 0.08);
@@ -964,7 +964,7 @@
         }
         .christos-voice-icon { color: #8696a0; font-size: 13px; }
         .christos-page { position: relative; }
-        
+
 
         /* ===== Notes / Notepad ===== */
         #learnCopticBtn { grid-column: auto !important; width: auto !important; }
@@ -1001,123 +1001,17 @@
         .notes-mobile-list { display:none; }
         @media(max-width:760px){ .notes-shell{grid-template-columns:1fr;}.notes-sidebar{display:none}.notes-mobile-list{display:block}.notes-card{width:96%!important}.notes-editor{min-height:58vh}.notes-body-input{min-height:43vh}.notes-topbar{gap:6px}.notes-tool{width:40px;height:40px} }
 
-    
+
 #infoCardContent:has(.kh-search){max-height:none;overflow:visible;padding:12px}.kh-button{flex:1 1 120px;font-size:.9rem}.kh-toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}.kh-button,.kh-select,.kh-search{font:inherit;color:var(--text-color);background:#1e293b;border:1px solid #475569;border-radius:12px;padding:10px 14px}.kh-button{cursor:pointer}.kh-button[aria-pressed="true"]{border-color:var(--gold-color);color:var(--gold-color)}.kh-search{width:100%;user-select:text}.kh-select{max-width:100%;width:100%}.kh-section{text-align:right;margin:12px 0;border:1px solid #475569;border-radius:14px;padding:16px}.kh-section summary{cursor:pointer;font-weight:700;line-height:1.9}.kh-text{font-family:Amiri,serif;font-size:1.35rem;line-height:2.1;margin:16px 0;white-space:pre-wrap;user-select:text}.kh-role{color:var(--gold-color);font:700 .95rem Cairo,sans-serif}.kh-note{color:var(--text-muted);font-size:.9rem;line-height:1.9}.kh-group{font-size:1.1rem;color:var(--gold-color);margin:24px 0 12px}.kh-sections{max-height:60vh;overflow:auto;padding:0 4px 20px;scroll-behavior:smooth}
 
 </style>
 </head>
 <body>
 
-    <!-- Step 1: Gender Selection Card -->
-    <div class="selection-card" id="genderCard">
-        <div class="header">
-            <h2>تحديد النوع</h2>
-            <p>يرجى اختيار نوعك للمتابعة في إعداد الحساب</p>
-        </div>
-
-        <form id="genderForm">
-            <div class="gender-options">
-                <label class="gender-box male" id="maleBox">
-                    <input type="radio" name="gender" value="male" id="maleRadio">
-                    <div class="check-badge"><i class="fa-solid fa-check"></i></div>
-                    <div class="icon-wrapper"><i class="fa-solid fa-mars"></i></div>
-                    <span class="gender-title">ذكر</span>
-                    <span class="gender-subtitle">Male</span>
-                </label>
-
-                <label class="gender-box female" id="femaleBox">
-                    <input type="radio" name="gender" value="female" id="femaleRadio">
-                    <div class="check-badge"><i class="fa-solid fa-check"></i></div>
-                    <div class="icon-wrapper"><i class="fa-solid fa-venus"></i></div>
-                    <span class="gender-title">أنثى</span>
-                    <span class="gender-subtitle">Female</span>
-                </label>
-            </div>
-
-            <div class="status-message" id="statusMessage">لم يتم اختيار أي نوع بعد</div>
-
-            <!-- reCAPTCHA Checkbox Simulation -->
-            <div class="recaptcha-box" id="recaptchaBox">
-                <div class="recaptcha-left">
-                    <div class="recaptcha-checkbox" id="recaptchaCheckbox">
-                        <i class="fa-solid fa-check"></i>
-                    </div>
-                    <span class="recaptcha-label">أنا لست روبوت</span>
-                </div>
-                <div class="recaptcha-brand">
-                    <i class="fa-solid fa-shield-halved"></i>
-                    <span>reCAPTCHA</span>
-                </div>
-            </div>
-
-            <div class="actions">
-                <button type="submit" class="btn btn-submit" id="submitBtn" disabled>
-                    <span>متابعة</span>
-                    <i class="fa-solid fa-arrow-left"></i>
-                </button>
-                <button type="button" class="btn btn-reset" id="resetBtn" title="إلغاء الاختيار">
-                    <i class="fa-solid fa-rotate-right"></i>
-                </button>
-            </div>
-        </form>
-    </div>
-
-    <!-- Step 2: Login Card -->
-    <div class="selection-card hidden" id="loginCard">
-        <button type="button" class="btn-back" id="backToGenderBtn">
-            <i class="fa-solid fa-arrow-right"></i>
-            <span>تغيير تحديد النوع</span>
-        </button>
-        
-        <div class="header">
-            <h2>تسجيل الدخول</h2>
-            <p>أدخل بيانات الحساب الخاص بك أو اختر طريقة أخرى</p>
-        </div>
-
-        <form class="login-form" id="loginForm">
-            <input type="text" placeholder="اسم المستخدم أو البريد الإلكتروني" required>
-            <input type="password" placeholder="كلمة المرور" required>
-            <button type="submit" class="btn-login">تسجيل الدخول</button>
-
-            <div class="divider">أو المتابعة باستخدام</div>
-
-            <div class="social-login-container">
-                <button type="button" class="btn-social btn-google" id="googleLoginBtn">
-                    <i class="fa-brands fa-google"></i> Google
-                </button>
-                <button type="button" class="btn-social btn-facebook" id="facebookLoginBtn">
-                    <i class="fa-brands fa-facebook-f"></i> Facebook
-                </button>
-            </div>
-
-            <p class="signup">ليس لديك حساب؟ <a href="#" id="goToSignupBtn">إنشاء حساب جديد</a></p>
-        </form>
-    </div>
-
-    <!-- Step 2.5: Sign Up Card -->
-    <div class="selection-card hidden" id="signupCard">
-        <button type="button" class="btn-back" id="backToLoginBtn">
-            <i class="fa-solid fa-arrow-right"></i>
-            <span>العودة لتسجيل الدخول</span>
-        </button>
-        
-        <div class="header">
-            <h2>إنشاء حساب جديد</h2>
-            <p>املأ البيانات التالية لإنشاء حسابك والدخول للتطبيق</p>
-        </div>
-
-        <form class="login-form" id="signupForm">
-            <input type="text" placeholder="الاسم الكامل" required>
-            <input type="email" placeholder="البريد الإلكتروني" required>
-            <input type="password" placeholder="كلمة المرور الجديدة" required>
-            <button type="submit" class="btn-login" style="background: linear-gradient(135deg, #10b981, #059669);">إنشاء الحساب والدخول</button>
-        </form>
-    </div>
-
     <!-- Step 3: Main Dashboard -->
-    <div class="selection-card dashboard-card hidden" id="dashboardCard">
+    <div class="selection-card dashboard-card" id="dashboardCard">
         <div class="header">
-            <h2>مرحباً بك يا جوفاني</h2>
+            <h2>مرحباً بك في التطبيق القبطي</h2>
             <p>اختر من الخدمات والمحتويات التالية:</p>
         </div>
 
@@ -1155,10 +1049,6 @@
                 <span class="app-title">نوتة</span>
             </div>
         </div>
-
-        <button type="button" class="btn-logout" id="logoutBtn">
-            <i class="fa-solid fa-right-from-bracket"></i> تسجيل الخروج
-        </button>
     </div>
 
 
@@ -1304,7 +1194,7 @@
             <h2 id="readerBookTitle">اسم السفر</h2>
             <p id="readerBookSubtitle">قراءة الأصحاحات</p>
         </div>
-        
+
         <div class="chapter-toolbar">
             <button id="prevChapterBtn"><i class="fa-solid fa-chevron-right"></i> السابق</button>
             <span id="currentChapterIndicator" style="font-weight: 700; color: var(--gold-color);">الأصحاح 1</span>
@@ -1422,7 +1312,7 @@
     </div>
 
     <!-- Navigation Bar -->
-    <nav class="bottom-nav hidden" id="bottomNav">
+    <nav class="bottom-nav" id="bottomNav">
         <button class="nav-item" id="navRobotBtn">
             <i class="fa-solid fa-robot"></i>
             <span>المساعد</span>
@@ -1439,72 +1329,10 @@
         </button>
     </nav>
 
-    <!-- Modals -->
-    <div class="modal-overlay hidden" id="googleModal">
-        <div class="modal-content">
-            <button class="modal-close closeModalBtn"><i class="fa-solid fa-xmark"></i></button>
-            <div class="modal-header">
-                <i class="fa-brands fa-google brand-icon" style="color: #ea4335;"></i>
-                <h3>اختر حساباً للمتابعة</h3>
-                <p>إلى التطبيق الخاص بك</p>
-            </div>
-            <div class="account-list">
-                <div class="account-item" data-name="Giovani Marco" data-email="giovani.marco@gmail.com">
-                    <div class="account-avatar">G</div>
-                    <div class="account-info">
-                        <span class="account-name">Giovani Marco</span>
-                        <span class="account-email">giovani.marco@gmail.com</span>
-                    </div>
-                </div>
-            </div>
-            <div class="add-account-btn">
-                <i class="fa-solid fa-user-plus"></i>
-                <span>استخدام حساب آخر</span>
-            </div>
-        </div>
-    </div>
-
-    <div class="modal-overlay hidden" id="facebookModal">
-        <div class="modal-content fb-modal">
-            <button class="modal-close closeModalBtn"><i class="fa-solid fa-xmark"></i></button>
-            <div class="modal-header">
-                <i class="fa-brands fa-facebook brand-icon" style="color: #1877f2;"></i>
-                <h3>تسجيل الدخول باستخدام Facebook</h3>
-                <p>اختر حسابك للمتابعة</p>
-            </div>
-            <div class="account-list">
-                <div class="account-item" data-name="Giovani Marco">
-                    <div class="account-avatar"><i class="fa-solid fa-user"></i></div>
-                    <div class="account-info">
-                        <span class="account-name">Giovani Marco</span>
-                        <span class="account-email">تم تسجيل الدخول كـ Giovani</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const maleBox = document.getElementById('maleBox');
-            const femaleBox = document.getElementById('femaleBox');
-            const maleRadio = document.getElementById('maleRadio');
-            const femaleRadio = document.getElementById('femaleRadio');
-            const statusMessage = document.getElementById('statusMessage');
-            const submitBtn = document.getElementById('submitBtn');
-            const resetBtn = document.getElementById('resetBtn');
-            const genderForm = document.getElementById('genderForm');
 
-            const recaptchaBox = document.getElementById('recaptchaBox');
-            let isVerifiedRobot = false;
 
-            const genderCard = document.getElementById('genderCard');
-            const loginCard = document.getElementById('loginCard');
-            const loginForm = document.getElementById('loginForm');
-            const signupCard = document.getElementById('signupCard');
-            const signupForm = document.getElementById('signupForm');
-            const goToSignupBtn = document.getElementById('goToSignupBtn');
-            const backToLoginBtn = document.getElementById('backToLoginBtn');
 
             const dashboardCard = document.getElementById('dashboardCard');
             const deepChristianityCard = document.getElementById('deepChristianityCard');
@@ -1541,8 +1369,6 @@
             const infoCardContent = document.getElementById('infoCardContent');
             const backToDashboardFromInfoBtn = document.getElementById('backToDashboardFromInfoBtn');
 
-            const backToGenderBtn = document.getElementById('backToGenderBtn');
-            const logoutBtn = document.getElementById('logoutBtn');
 
             const bibleCardBtn = document.getElementById('bibleCardBtn');
             const backToDashboardBtn = document.getElementById('backToDashboardBtn');
@@ -1566,10 +1392,6 @@
             const navRobotBtn = document.getElementById('navRobotBtn');
             const navSearchBtn = document.getElementById('navSearchBtn');
 
-            const googleLoginBtn = document.getElementById('googleLoginBtn');
-            const facebookLoginBtn = document.getElementById('facebookLoginBtn');
-            const googleModal = document.getElementById('googleModal');
-            const facebookModal = document.getElementById('facebookModal');
 
             const chatMessages = document.getElementById('chatMessages');
             const chatInput = document.getElementById('chatInput');
@@ -1961,84 +1783,6 @@
             let activeBook = null;
             let currentChapter = 1;
 
-            function checkFormValidity() {
-                const isGenderSelected = maleRadio.checked || femaleRadio.checked;
-                if (isGenderSelected && isVerifiedRobot) {
-                    submitBtn.disabled = false;
-                } else {
-                    submitBtn.disabled = true;
-                }
-            }
-
-            function selectGender(gender) {
-                if (gender === 'male') {
-                    maleRadio.checked = true;
-                    maleBox.classList.add('selected');
-                    femaleBox.classList.remove('selected');
-                    statusMessage.textContent = 'تم اختيار النوع: ذكر ♂';
-                    statusMessage.className = 'status-message active-male';
-                } else if (gender === 'female') {
-                    femaleRadio.checked = true;
-                    femaleBox.classList.add('selected');
-                    maleBox.classList.remove('selected');
-                    statusMessage.textContent = 'تم اختيار النوع: أنثى ♀';
-                    statusMessage.className = 'status-message active-female';
-                }
-                checkFormValidity();
-            }
-
-            maleBox.addEventListener('click', () => selectGender('male'));
-            femaleBox.addEventListener('click', () => selectGender('female'));
-
-            recaptchaBox.addEventListener('click', () => {
-                isVerifiedRobot = !isVerifiedRobot;
-                if (isVerifiedRobot) {
-                    recaptchaBox.classList.add('verified');
-                } else {
-                    recaptchaBox.classList.remove('verified');
-                }
-                checkFormValidity();
-            });
-
-            resetBtn.addEventListener('click', () => {
-                maleRadio.checked = false;
-                femaleRadio.checked = false;
-                maleBox.classList.remove('selected');
-                femaleBox.classList.remove('selected');
-                statusMessage.textContent = 'لم يتم اختيار أي نوع بعد';
-                statusMessage.className = 'status-message';
-                isVerifiedRobot = false;
-                recaptchaBox.classList.remove('verified');
-                submitBtn.disabled = true;
-            });
-
-            genderForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                genderCard.classList.add('hidden');
-                loginCard.classList.remove('hidden');
-            });
-
-            backToGenderBtn.addEventListener('click', () => {
-                loginCard.classList.add('hidden');
-                genderCard.classList.remove('hidden');
-            });
-
-            goToSignupBtn.addEventListener('click', (e) => {
-                e.preventDefault();
-                loginCard.classList.add('hidden');
-                signupCard.classList.remove('hidden');
-            });
-
-            backToLoginBtn.addEventListener('click', () => {
-                signupCard.classList.add('hidden');
-                loginCard.classList.remove('hidden');
-            });
-
-            signupForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                showMainApp();
-            });
-
             function hideAllMainViews() {
                 dashboardCard.classList.add('hidden');
                 deepChristianityCard.classList.add('hidden');
@@ -2048,7 +1792,6 @@
                 chapterReaderCard.classList.add('hidden');
                 botCard.classList.add('hidden');
                 searchCard.classList.add('hidden');
-                signupCard.classList.add('hidden');
                 katamerosCard.classList.add('hidden');
                 agpeyaCard.classList.add('hidden');
                 agpeyaReaderCard.classList.add('hidden');
@@ -2057,18 +1800,11 @@
             }
 
             function showMainApp() {
-                loginCard.classList.add('hidden');
-                signupCard.classList.add('hidden');
                 hideAllMainViews();
                 dashboardCard.classList.remove('hidden');
                 bottomNav.classList.remove('hidden');
                 setNavActive(navHomeBtn);
             }
-
-            loginForm.addEventListener('submit', (e) => {
-                e.preventDefault();
-                showMainApp();
-            });
 
             function setNavActive(activeBtn) {
                 [navHomeBtn, navRobotBtn, navSearchBtn].forEach(btn => btn.classList.remove('active'));
@@ -2095,12 +1831,6 @@
                 searchCard.classList.remove('hidden');
                 bottomNav.classList.remove('hidden');
                 setNavActive(navSearchBtn);
-            });
-
-            logoutBtn.addEventListener('click', () => {
-                hideAllMainViews();
-                bottomNav.classList.add('hidden');
-                genderCard.classList.remove('hidden');
             });
 
             /* Deep Christianity Navigation */
@@ -2236,24 +1966,6 @@
                     currentChapter++;
                     updateChapterView();
                 }
-            });
-
-            googleLoginBtn.addEventListener('click', () => googleModal.classList.remove('hidden'));
-            facebookLoginBtn.addEventListener('click', () => facebookModal.classList.remove('hidden'));
-
-            document.querySelectorAll('.closeModalBtn').forEach(btn => {
-                btn.addEventListener('click', () => {
-                    googleModal.classList.add('hidden');
-                    facebookModal.classList.add('hidden');
-                });
-            });
-
-            document.querySelectorAll('.account-item').forEach(item => {
-                item.addEventListener('click', () => {
-                    googleModal.classList.add('hidden');
-                    facebookModal.classList.add('hidden');
-                    showMainApp();
-                });
             });
 
             function getCurrentTime() {
@@ -3004,7 +2716,7 @@
                     const voiceRange = document.getElementById('christosVoiceRange');
                     const currentTimeEl = document.getElementById('christosCurrentTime');
                     const durationEl = document.getElementById('christosDuration');
-                    
+
                     const fmtTime = s => {
                         if (!Number.isFinite(s)) return '0:00';
                         const m = Math.floor(s / 60);
@@ -3233,6 +2945,7 @@
                 const attribution=document.createElement('p');attribution.className='kh-note';attribution.textContent='النصوص الطقسية العربية التقليدية، بحسب فهارس الخولاجي بمكتبة الأنبا تكلا. القراءات اليومية والألحان المتغيرة بحسب المناسبة تُراجع في القطمارس. قراءة هذه النصوص لا تحتاج اتصالًا بمصدر خارجي.';infoCardContent.append(attribution);
                 infoCard.classList.remove('hidden');
             }
+            showMainApp();
             const khoolagyButton = document.getElementById('khoolagyBtn');
             khoolagyButton.addEventListener('click', showKhoolagy);
             khoolagyButton.addEventListener('keydown', event => {
