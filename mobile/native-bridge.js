@@ -5,8 +5,8 @@ import {Filesystem,Directory,Encoding} from '@capacitor/filesystem';
 const DailyVerse=registerPlugin('DailyVerse');
 if(Capacitor.isNativePlatform()){
  window.NativeApp={
-  async shareBackup(text){const file=await Filesystem.writeFile({path:'amegoo-backup-'+Date.now()+'.json',data:text,directory:Directory.Cache,encoding:Encoding.UTF8});await Share.share({title:'نسخة احتياطية — التطبيق القبطي',files:[file.uri]});},
-  async shareApp(){await Share.share({title:'التطبيق القبطي',text:'الكتاب المقدس والأجبية والألحان والشرح في مكان واحد',url:'https://amegoo.vercel.app'});},
+  async shareBackup(text){const file=await Filesystem.writeFile({path:'amegoo-backup-'+Date.now()+'.json',data:text,directory:Directory.Cache,encoding:Encoding.UTF8});await Share.share({title:'نسخة احتياطية — رفيقك القبطي',files:[file.uri]});},
+  async shareApp(){await Share.share({title:'رفيقك القبطي',text:'الكتاب المقدس والأجبية والألحان والشرح في مكان واحد',url:'https://amegoo.vercel.app'});},
   async setTheme(light){await SystemBars.setStyle({style:light?SystemBarsStyle.Light:SystemBarsStyle.Dark});}
  };
  document.addEventListener('DOMContentLoaded',()=>{

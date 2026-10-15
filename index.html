@@ -10,7 +10,7 @@
     <meta name="theme-color" content="#0f172a">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>التطبيق القبطي - الكتاب المقدس</title>
+    <title>رفيقك القبطي - الكتاب المقدس</title>
     <!-- Google Fonts & Font Awesome Icons -->
 
     <link rel="stylesheet" href="assets/fonts.css">
@@ -24,12 +24,12 @@
 <section class="settings-group"><h3>المظهر والقراءة</h3><div class="settings-row"><label for="settingsTheme">مظهر التطبيق<small>فاتح، داكن، أو حسب جهازك</small></label><select id="settingsTheme"><option value="system">حسب الجهاز</option><option value="dark">داكن</option><option value="light">فاتح</option></select></div><div class="settings-row"><label for="settingsFont">حجم خط القراءة</label><output id="settingsFontValue"></output></div><input id="settingsFont" class="settings-font" type="range" min="1" max="2.2" step=".05" aria-label="حجم خط القراءة"><p class="settings-example">كَلَامُكَ سِرَاجٌ لِرِجْلِي وَنُورٌ لِسَبِيلِي.</p><div class="settings-row"><label for="settingsMotion">تقليل الحركة<small>عرض أهدأ بدون تأثيرات متحركة</small></label><input id="settingsMotion" type="checkbox"></div></section>
 <section class="settings-group"><h3>الصوت</h3><div class="settings-row"><label for="settingsSpeed">سرعة الألحان<small>تُطبق على المشغّل الصوتي المباشر</small></label><select id="settingsSpeed"><option value="0.75">٠٫٧٥×</option><option value="1">١×</option><option value="1.25">١٫٢٥×</option><option value="1.5">١٫٥×</option></select></div><p class="settings-info">الكتب والنصوص متاحة بدون إنترنت. التسجيلات الخارجية والقطمارس والمساعد تحتاج اتصالًا.</p></section>
 <section class="settings-group" id="dailyVerseSettings"><h3>آية كل يوم</h3><p class="settings-info" id="dailyVerseInfo">الإشعارات اليومية متاحة في تطبيق أندرويد. الآيات محفوظة داخل التطبيق ولا تحتاج إنترنت.</p><div class="settings-row"><label for="dailyVerseEnabled">إشعار الآية اليومية<small>آية مختلفة كل يوم من الكتاب المقدس</small></label><input id="dailyVerseEnabled" type="checkbox" disabled></div><div class="settings-row"><label for="dailyVerseTime">وقت الإشعار</label><input id="dailyVerseTime" type="time" value="09:00" disabled></div><p class="settings-example" id="dailyVersePreview"></p><div class="settings-actions"><button type="button" class="kh-button" id="dailyVerseTest" disabled>جرّب الإشعار</button><button type="button" class="kh-button" id="dailyVerseRead" hidden>اقرأ آية اليوم</button></div><p id="dailyVerseStatus" class="settings-info" role="status" aria-live="polite"></p></section><section class="settings-group"><h3>نسختك الاحتياطية</h3><p class="settings-info">احفظ النوتات والمفضلة والإعدادات في ملف تحتفظ به عند تغيير الجهاز.</p><div class="settings-actions"><button type="button" class="kh-button" id="settingsExport">تصدير نسخة</button><button type="button" class="kh-button" id="settingsImport">استعادة نسخة</button></div><input hidden id="settingsBackupFile" type="file" accept="application/json,.json"></section>
-<section class="settings-group"><h3>عن التطبيق</h3><p class="settings-info">التطبيق القبطي · الإصدار ١٫٠٫١<br>محتوى للقراءة والصلاة ودراسة الإيمان.<br><a href="privacy.html" target="_blank" rel="noopener">سياسة الخصوصية</a></p><div class="settings-actions"><button type="button" class="kh-button" id="settingsShare">مشاركة التطبيق</button><button type="button" class="kh-button" id="settingsReset">إعدادات العرض الافتراضية</button></div></section><p id="settingsStatus" class="settings-info" role="status"></p></div>
+<section class="settings-group"><h3>عن التطبيق</h3><p class="settings-info">رفيقك القبطي · الإصدار ١٫٠٫٢<br>محتوى للقراءة والصلاة ودراسة الإيمان.<br><a href="privacy.html" target="_blank" rel="noopener">سياسة الخصوصية</a></p><div class="settings-actions"><button type="button" class="kh-button" id="settingsShare">مشاركة التطبيق</button><button type="button" class="kh-button" id="settingsReset">إعدادات العرض الافتراضية</button></div></section><p id="settingsStatus" class="settings-info" role="status"></p></div>
 
     <!-- Step 3: Main Dashboard -->
     <div class="selection-card dashboard-card" id="dashboardCard">
         <div class="header">
-            <h2>مرحباً بك في التطبيق القبطي</h2>
+            <h2>أهلاً بك في رفيقك القبطي</h2>
             <p>اختر من الخدمات والمحتويات التالية:</p>
         </div>
 

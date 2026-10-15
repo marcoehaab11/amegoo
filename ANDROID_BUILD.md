@@ -26,3 +26,7 @@ $env:JAVA_TOOL_OPTIONS = '-Djava.nio.channels.spi.SelectorProvider=sun.nio.ch.Wi
 ```
 
 Daily verses use the app-owned DailyVerse Capacitor plugin and one inexact Android alarm. Sources are assets/data/daily-verses.json, extracted verbatim from the bundled Bible. Notification scheduling needs no backend, exact-alarm permission or signing secret. Version 1.0.1 (code 2) replaces the initial test build.
+
+## Upload key for the first Google Play release
+
+An app-specific RSA upload key is kept outside the Git checkout in the workspace signing directory. Its password is stored with Windows DPAPI for the current Windows user, not in this repository or the deliverable source ZIP. Back up the private keystore and export the password securely from the same Windows account before moving computers or reinstalling Windows. Never upload the private key or password to GitHub. The upload key is separate from Google-managed Play App Signing.

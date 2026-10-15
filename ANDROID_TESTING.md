@@ -30,3 +30,7 @@ The pre-existing emulator was unresponsive at the system level. A separate works
 - Network disabled through CDP: local verse preview and dialog remained available after reload. No horizontal overflow or JavaScript errors.
 - First launch did not prompt for notification permission. Permission request is confined to explicit opt-in; the API 33+ granted-permission path was tested with the dedicated emulator's permission manager. Android system permission dialog interaction, reboot delivery and actual next-day timing still require physical-device checks.
 - Daily scheduling uses an app-private receiver and one inexact alarm; each daily delivery schedules the next local calendar day. Duplicate daily delivery is suppressed by saved date. Boot/time/time-zone/app-update broadcasts reschedule; force-stop requires reopening the app. No exact-alarm permission or notification server.
+
+## Naming update — 1.0.2
+
+User-approved name: رفيقك القبطي. APK/AAB build completed. AAPT confirms versionName 1.0.2, versionCode 3 and the Android launcher label. Existing logo retained. Google Play app draft exists in the publisher account; upload signing awaits permitted execution. The unsigned AAB must not be uploaded as a production artifact.
