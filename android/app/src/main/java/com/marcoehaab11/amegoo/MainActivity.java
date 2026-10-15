@@ -12,6 +12,7 @@ public class MainActivity extends BridgeActivity {
         SplashScreen splash = SplashScreen.installSplashScreen(this);
         final long launchedAt = SystemClock.uptimeMillis();
         registerPlugin(DailyVersePlugin.class);
+        registerPlugin(JourneyReminderPlugin.class);
         super.onCreate(savedInstanceState);
         splash.setKeepOnScreenCondition(() -> {
             long elapsed = SystemClock.uptimeMillis() - launchedAt;

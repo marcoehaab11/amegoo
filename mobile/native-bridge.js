@@ -3,13 +3,18 @@ import {App} from '@capacitor/app';
 import {Share} from '@capacitor/share';
 import {Filesystem,Directory,Encoding} from '@capacitor/filesystem';
 const DailyVerse=registerPlugin('DailyVerse');
+const JourneyReminder=registerPlugin('JourneyReminder');
 if(Capacitor.isNativePlatform()){
  window.NativeApp={
+  journeyReminders:JourneyReminder,
   async shareBackup(text){const file=await Filesystem.writeFile({path:'amegoo-backup-'+Date.now()+'.json',data:text,directory:Directory.Cache,encoding:Encoding.UTF8});await Share.share({title:'نسخة احتياطية — رفيقك القبطي',files:[file.uri]});},
   async shareApp(){await Share.share({title:'رفيقك القبطي',text:'الكتاب المقدس والأجبية والألحان والشرح في مكان واحد',url:'https://amegoo.vercel.app'});},
   async setTheme(light){await SystemBars.setStyle({style:light?SystemBarsStyle.Light:SystemBarsStyle.Dark});}
  };
  document.addEventListener('DOMContentLoaded',()=>{
+  const openJourney=data=>{if(['reading','prayer'].includes(data.kind))window.AppJourney?.open(data.kind);};
+  JourneyReminder.addListener('journeyTapped',openJourney);
+  JourneyReminder.launchTarget().then(openJourney).catch(()=>{});
   document.documentElement.classList.add('native-app');window.NativeApp.setTheme(document.documentElement.dataset.theme==='light').catch(()=>{});
   document.getElementById('offlineStatus').textContent='الكتب والنصوص محفوظة داخل التطبيق. التسجيلات الخارجية والمساعد والقطمارس تحتاج إنترنت.';
   const toggle=document.getElementById('dailyVerseEnabled'),time=document.getElementById('dailyVerseTime'),test=document.getElementById('dailyVerseTest'),read=document.getElementById('dailyVerseRead'),status=document.getElementById('dailyVerseStatus');let today;

@@ -271,9 +271,10 @@
             let activeBook = null;
             let currentChapter = 1;
 
+            window.AppLibrary={hide:hideAllMainViews,loadBook:loadLocalBibleBook};
             function hideAllMainViews() {
                 window.stopHymnAudio?.();
-                document.querySelectorAll('#copticCard,#favoritesCard,#faithChatCard,#settingsCard').forEach(card=>card.classList.add('hidden'));
+                document.querySelectorAll('#copticCard,#favoritesCard,#faithChatCard,#settingsCard,#journeyCard').forEach(card=>card.classList.add('hidden'));
                 readingTools?.classList.add('hidden');
                 flushNoteSave();
                 dashboardCard.classList.add('hidden');
