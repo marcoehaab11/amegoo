@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded',()=>{
  function render(){
   content.classList.remove('journey-is-reading');content.replaceChildren();content.scrollTop=0;document.getElementById('journeyFontTools').hidden=true;const s=summary(kind);content.append(metrics());
   if(kind==='reading'){
-   const r=state.reading;if(!r.plan){content.append(setup());return;}
+   const r=state.reading;if(!r.plan){content.append(setup(),reminders());return;}
    const count=r.completed.length,progress=el('progress');progress.max=365;progress.value=count;progress.setAttribute('aria-label','تقدم خطة السنة');content.append(progress,el('p',`${r.plan==='nt'?'العهد الجديد':'الكتاب المقدس مع الأسفار القانونية الثانية'} · ${n(count)} من ٣٦٥ يومًا`));
    if(count===365)content.append(el('h3','أكملت الرحلة! مبارك إتمام القراءة.'));
    else{const day=D.plans[r.plan][s.today?count-1:count];const title=s.today?'قراءة اليوم مكتملة ✓':`القراءة التالية: اليوم ${n(count+1)}`;content.append(el('h3',title),el('p',`${n(Math.max(1,Math.ceil(day.words/160)))} دقائق تقريبًا · ${refs(day)}`,'journey-day-reference'));
