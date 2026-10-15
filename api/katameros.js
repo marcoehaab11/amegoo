@@ -1,5 +1,9 @@
 // Fixed upstream: never proxy a caller-supplied URL or forward user credentials.
 module.exports = async function handler(req, res) {
+  // CORS varies between the website and Android's https://localhost origin.
+  // Do not share a no-Origin response through the CDN with the native app.
+  res.setHeader('Cache-Control', 'private, no-store');
+  res.setHeader('Vary', 'Origin');
   const origin = req.headers.origin;
   if (origin) {
     const allowed = new Set(['https://localhost', ...(process.env.APP_ALLOWED_ORIGINS || '').split(',').map(x => x.trim()).filter(Boolean)]);
@@ -23,7 +27,6 @@ module.exports = async function handler(req, res) {
     if (raw.length > 2000000) throw Error('size');
     const data = JSON.parse(raw);
     if (!Array.isArray(data.sections) || !data.sections.length || !data.sections.some(s => s.subSections?.some(sub => sub.readings?.length))) throw Error('empty');
-    res.setHeader('Cache-Control','public, s-maxage=21600, stale-while-revalidate=86400');
     return res.status(200).json({date, title:data.title, periodInfo:data.periodInfo, copticDate:data.copticDate, sections:data.sections});
   } catch { return res.status(503).json({error:'تعذر تحميل قراءات التاريخ المختار. حاول مرة أخرى عند توفر الاتصال.'}); }
 };
