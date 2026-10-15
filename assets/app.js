@@ -464,44 +464,9 @@
             }
 
 
-            // القطمارس بيتعرض من الموقع الرسمي katameros.app جوه التطبيق مباشرة.
-            // السيرفر بتاعهم مش بيسمح لتطبيقات تانية تسحب البيانات (CORS)، لكن عرض الموقع نفسه جوه إطار شغال.
-            function katSiteUrl() {
-                const val = katDate.value || todayStr();
-                const [y, m, d] = val.split('-');
-                return `https://katameros.app/ar/?date=${d}-${m}-${y}`;
-            }
-
-            let katFrame = null, katLoadingEl = null, katSlowTimer = null;
             function loadKatameros() {
                 katContent.dataset.loaded = '1';
-                if (!katFrame) {
-                    katContent.classList.add('kat-embed');
-                    katContent.innerHTML = `
-                        <div class="kat-frame-loading" id="katFrameLoading">
-                            <div class="reader-loading"><svg class="icon fa-solid fa-spinner fa-spin" style="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-9-9"/></svg> جارٍ تحميل القراءات...</div>
-                            <p class="kat-slow hidden" id="katSlow">التحميل بياخد وقت؟ <button type="button" class="kat-link-btn" id="katOpenSite2">افتح القراءات في المتصفح</button></p>
-                        </div>
-                        <iframe class="kat-frame" id="katFrame" title="قراءات القطمارس" allow="clipboard-write"></iframe>
-                        <div class="kat-frame-bar">
-                            <span>المصدر: katameros.app</span>
-                            <button type="button" class="kat-link-btn" id="katOpenSite"><svg class="icon fa-solid fa-arrow-up-right-from-square" style="" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m10 5 7 7-7 7M17 12H3"/></svg> فتح في المتصفح</button>
-                        </div>`;
-                    katFrame = document.getElementById('katFrame');
-                    katLoadingEl = document.getElementById('katFrameLoading');
-                    katFrame.addEventListener('load', () => {
-                        katLoadingEl.classList.add('hidden');
-                        clearTimeout(katSlowTimer);
-                    });
-                    const openSite = () => window.open(katSiteUrl(), '_blank', 'noopener');
-                    document.getElementById('katOpenSite').addEventListener('click', openSite);
-                    document.getElementById('katOpenSite2').addEventListener('click', openSite);
-                }
-                katLoadingEl.classList.remove('hidden');
-                document.getElementById('katSlow').classList.add('hidden');
-                clearTimeout(katSlowTimer);
-                katSlowTimer = setTimeout(() => document.getElementById('katSlow').classList.remove('hidden'), 10000);
-                katFrame.src = katSiteUrl();
+                window.KatamerosReader.load(katDate.value || todayStr(), katContent);
             }
 
             function shiftKatDate(days) {
@@ -1492,7 +1457,7 @@ const EXTRA_HYMNS = [{"id":"mary2","title":"مديح العذراء الثاني
             window.addEventListener('appinstalled',()=>{installButton.hidden=true;});
             if('serviceWorker' in navigator&&location.protocol!=='file:'&&!window.APP_RUNTIME?.native){
                 navigator.serviceWorker.register('sw.js').then(registration=>{
-                    const status=document.getElementById('offlineStatus');const ready=()=>status.textContent='القراءة جاهزة بدون إنترنت. تسجيلات الألحان الجديدة والقطمارس تحتاج اتصالًا.';
+                    const status=document.getElementById('offlineStatus');const ready=()=>status.textContent='القراءة جاهزة بدون إنترنت. القطمارس يحتاج اتصالًا أول مرة لكل يوم؛ والتسجيلات الخارجية تحتاج اتصالًا.';
                     if(registration.active)ready();const worker=registration.installing||registration.waiting;if(worker)worker.addEventListener('statechange',()=>{if(worker.state==='activated')ready();});
                     navigator.serviceWorker.ready.then(ready);
                 }).catch(()=>{document.getElementById('offlineStatus').textContent='تعذر تجهيز القراءة بدون إنترنت. أعد فتح الموقع عند الاتصال؛ يمكنك استخدام النصوص أثناء التصفح.';});

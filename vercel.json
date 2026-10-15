@@ -3,6 +3,9 @@
   "buildCommand": null,
   "outputDirectory": ".",
   "functions": {
+    "api/katameros.js": {
+      "maxDuration": 30
+    },
     "api/chat.js": {
       "includeFiles": "assets/data/**",
       "maxDuration": 60

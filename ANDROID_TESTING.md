@@ -45,3 +45,12 @@ User-approved name: رفيقك القبطي. APK/AAB build completed. AAPT confi
 ## Final reading polish — 1.0.4 (code 5)
 
 The light theme reader heading inherited a higher-specificity dark-theme heading color. Added scoped light reader header/body rules. Actual browser and Android WebView measurements both report 11.52:1 heading contrast. Installed the final APK after restarting the dedicated test emulator to clear a stuck package-manager update. Native version, final logo hash, settings, Bible and Agpeya screenshots passed; daily verse scheduling/notification delivery also passed under com.amegoo.talkha before the CSS-only patch. Google Play accepted and published code 5 to internal testing.
+
+
+## قطمارس نصي — ١٫٠٫٥
+
+استُبدل إطار الموقع بقارئ نصي كامل من بيانات katameros.app العربية (فان دايك، bibleId=3). وسيط GET ثابت على الخادم مع تحقق التاريخ وCORS، ولا يمرر بيانات أو ترويسات المستخدم إلى المصدر. تُعرض الأقسام بترتيب المصدر، بما فيه ساعات الجمعة العظيمة، دون فرض أقسام يوم عادي. HTML السنكسار يُحوّل لنص داخل مستند خامل ولا يُدرج في صفحة التطبيق.
+
+تُحفظ آخر ٢٠ يومًا مفتوحًا محليًا، ويُعرض تنبيه واضح عند استخدام نسخة محفوظة. اليوم غير المحفوظ يحتاج الإنترنت، ولا تستبدل قراءات تاريخ بآخر عند انقطاع الاتصال. المصدر وترخيص MIT مرفقان في store/licenses/katameros-MIT.txt.
+
+التحقق: استجابة حية ليوم ١٥ أكتوبر ٢٠٢٦، ١١٩ آية مطابقة في العدد والترتيب، التاريخ القبطي، السنكسار، انعدام iframe، تكبير الخط، عرض هاتف ٣٩٠px، الفاتح والداكن، قراءة محفوظة بعد إعادة فتح الصفحة مع قطع الإنترنت، يوم غير محفوظ وإعادة المحاولة، رفض تاريخ مستحيل ومصدر CORS غريب وPOST. روجعت بنية الميلاد والقيامة والجمعة العظيمة من API؛ لا يُعد ذلك تدقيقًا كنسيًا كاملًا للتقويم.
