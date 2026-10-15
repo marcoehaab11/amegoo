@@ -2,6 +2,6 @@
 <resources>
     <string name="app_name">رفيقك القبطي</string>
     <string name="title_activity_main">رفيقك القبطي</string>
-    <string name="package_name">com.marcoehaab11.amegoo</string>
-    <string name="custom_url_scheme">com.marcoehaab11.amegoo</string>
+    <string name="package_name">com.amegoo.talkha</string>
+    <string name="custom_url_scheme">com.amegoo.talkha</string>
 </resources>

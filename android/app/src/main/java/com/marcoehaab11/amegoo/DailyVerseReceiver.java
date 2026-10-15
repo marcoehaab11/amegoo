@@ -16,7 +16,7 @@ import java.util.TimeZone;
 import java.util.Calendar;
 
 public class DailyVerseReceiver extends BroadcastReceiver {
-    static final String CHANNEL = "daily_verse", ACTION = "com.marcoehaab11.amegoo.DAILY_VERSE";
+    static final String CHANNEL = "daily_verse", ACTION = "com.amegoo.talkha.DAILY_VERSE";
     static SharedPreferences prefs(Context c) { return c.getSharedPreferences("daily_verse", Context.MODE_PRIVATE); }
     static boolean allowed(Context c) {
         if ((Build.VERSION.SDK_INT >= 33 && c.checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED)
@@ -55,7 +55,7 @@ public class DailyVerseReceiver extends BroadcastReceiver {
             NotificationChannel channel = new NotificationChannel(CHANNEL, "آية كل يوم", NotificationManager.IMPORTANCE_DEFAULT);
             channel.setDescription("آية يومية من الكتاب المقدس في الوقت الذي تختاره"); manager.createNotificationChannel(channel);
         }
-        Intent open = new Intent(c, MainActivity.class).setAction("com.marcoehaab11.amegoo.OPEN_VERSE").putExtra("dailyVerse", v.toString()).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        Intent open = new Intent(c, MainActivity.class).setAction("com.amegoo.talkha.OPEN_VERSE").putExtra("dailyVerse", v.toString()).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
         PendingIntent tap = PendingIntent.getActivity(c, test ? 703 : 702, open, PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         String text = v.getString("text");
         NotificationManagerCompat.from(c).notify(test ? 703 : 702, new NotificationCompat.Builder(c, CHANNEL)

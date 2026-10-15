@@ -34,3 +34,14 @@ The pre-existing emulator was unresponsive at the system level. A separate works
 ## Naming update — 1.0.2
 
 User-approved name: رفيقك القبطي. APK/AAB build completed. AAPT confirms versionName 1.0.2, versionCode 3 and the Android launcher label. Existing logo retained. Google Play app draft exists in the publisher account; upload signing awaits permitted execution. The unsigned AAB must not be uploaded as a production artifact.
+
+## Google Play package and signed build — 1.0.3
+
+- Google Play registers this app as com.amegoo.talkha. applicationId, Capacitor appId and URL scheme now match; Java namespace remains internal and the launcher activity was verified with AAPT.
+- Release AAB signed with the app-specific RSA upload key; jarsigner reports jar verified. Self-signed upload certificate is expected; private key remains outside the checkout.
+- Installed the new package on the dedicated emulator. Native bridge, settings, local verse preview, Bible reading and version 1.0.3 passed with no JavaScript errors or horizontal overflow. SHA-256 of the packaged logo equals the final text-free, plaque-free icon.
+- Captured actual app WebView images. Store phone assets add plain background padding only to fit 1080x1920 (9:16); no app controls or content were composited or invented. Original captures are retained separately.
+
+## Final reading polish — 1.0.4 (code 5)
+
+The light theme reader heading inherited a higher-specificity dark-theme heading color. Added scoped light reader header/body rules. Actual browser and Android WebView measurements both report 11.52:1 heading contrast. Installed the final APK after restarting the dedicated test emulator to clear a stuck package-manager update. Native version, final logo hash, settings, Bible and Agpeya screenshots passed; daily verse scheduling/notification delivery also passed under com.amegoo.talkha before the CSS-only patch. Google Play accepted and published code 5 to internal testing.
