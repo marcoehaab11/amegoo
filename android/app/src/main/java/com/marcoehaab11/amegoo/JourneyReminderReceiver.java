@@ -33,6 +33,6 @@ public class JourneyReminderReceiver extends BroadcastReceiver {
                 PendingIntent tap=PendingIntent.getActivity(c,id(kind)+1,open,PendingIntent.FLAG_UPDATE_CURRENT|PendingIntent.FLAG_IMMUTABLE);
                 NotificationManagerCompat.from(c).notify(id(kind),new NotificationCompat.Builder(c,CHANNEL).setSmallIcon(R.drawable.ic_notification_book).setColor(0xFFD4AF37).setContentTitle(kind.equals("reading")?"وقت رحلتك مع الكتاب":"وقت الصلاة").setContentText(kind.equals("reading")?"خطوة صغيرة كل يوم. افتح قراءة اليوم وتابع من مكانك.":"خصص وقتًا هادئًا للصلاة. افتح صلاتك اليومية.").setContentIntent(tap).setAutoCancel(true).build());prefs(c,kind).edit().putString("lastDay",today).apply();
             }
-        }scheduleAll(c);
+        }if(valid(kind))schedule(c,kind);else scheduleAll(c);
     }
 }
